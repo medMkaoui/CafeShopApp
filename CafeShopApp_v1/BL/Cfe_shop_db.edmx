@@ -1,0 +1,2810 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Cfe_shop_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="achat_details">
+          <Key>
+            <PropertyRef Name="achat" />
+            <PropertyRef Name="produit" />
+          </Key>
+          <Property Name="achat" Type="int" Nullable="false" />
+          <Property Name="produit" Type="int" Nullable="false" />
+          <Property Name="qte" Type="int" />
+          <Property Name="prix_vente" Type="decimal" Precision="10" Scale="3" />
+        </EntityType>
+        <EntityType Name="achats">
+          <Key>
+            <PropertyRef Name="id_achat" />
+          </Key>
+          <Property Name="id_achat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date_achat" Type="date" />
+          <Property Name="fournisseur" Type="int" />
+          <Property Name="responsable_achat" Type="int" />
+          <Property Name="montant_total" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="montant_rest" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="iscredit" Type="bit" />
+        </EntityType>
+        <EntityType Name="categories">
+          <Key>
+            <PropertyRef Name="id_cat" />
+          </Key>
+          <Property Name="id_cat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_cat" Type="nvarchar" MaxLength="30" />
+          <Property Name="image_cat" Type="image" />
+          <Property Name="is_categorie_Achat" Type="bit" />
+        </EntityType>
+        <EntityType Name="charges">
+          <Key>
+            <PropertyRef Name="id_charge" />
+          </Key>
+          <Property Name="id_charge" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date_charge" Type="date" />
+          <Property Name="responsable_charge" Type="int" />
+          <Property Name="montant" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="type_charge" Type="nvarchar" MaxLength="50" />
+          <Property Name="mode_reglement" Type="nvarchar" MaxLength="50" />
+          <Property Name="desc_charge" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="clients">
+          <Key>
+            <PropertyRef Name="id_client" />
+          </Key>
+          <Property Name="id_client" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_client" Type="nvarchar" MaxLength="50" />
+          <Property Name="adresse" Type="nvarchar" MaxLength="40" />
+          <Property Name="email" Type="nvarchar" MaxLength="40" />
+          <Property Name="tel" Type="nvarchar" MaxLength="15" />
+          <Property Name="max_credit" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="total_credit" Type="decimal" Precision="10" Scale="3" />
+        </EntityType>
+        <EntityType Name="commande_details">
+          <Key>
+            <PropertyRef Name="cmd" />
+            <PropertyRef Name="produit" />
+          </Key>
+          <Property Name="cmd" Type="int" Nullable="false" />
+          <Property Name="produit" Type="int" Nullable="false" />
+          <Property Name="qte_prod" Type="int" />
+          <Property Name="note" Type="nvarchar" MaxLength="50" />
+          <Property Name="prix_vente" Type="decimal" Precision="10" Scale="3" />
+        </EntityType>
+        <EntityType Name="commande_details_annuler">
+          <Key>
+            <PropertyRef Name="cmd" />
+            <PropertyRef Name="produit" />
+          </Key>
+          <Property Name="cmd" Type="int" Nullable="false" />
+          <Property Name="produit" Type="int" Nullable="false" />
+          <Property Name="qte_prod" Type="int" />
+          <Property Name="note" Type="nvarchar" MaxLength="50" />
+          <Property Name="prix_vente" Type="decimal" Precision="10" Scale="3" />
+        </EntityType>
+        <EntityType Name="commandes">
+          <Key>
+            <PropertyRef Name="id_cmd" />
+          </Key>
+          <Property Name="id_cmd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type_cmd" Type="nvarchar" MaxLength="50" />
+          <Property Name="date_cmd" Type="date" />
+          <Property Name="t_able" Type="nvarchar" MaxLength="50" />
+          <Property Name="client" Type="int" />
+          <Property Name="responsable" Type="int" />
+          <Property Name="enattend" Type="bit" />
+          <Property Name="statu" Type="nvarchar" MaxLength="40" />
+          <Property Name="montant_total" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="montant_rest" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="delivery_company" Type="int" />
+          <Property Name="isready" Type="bit" />
+          <Property Name="created_at" Type="datetime2" Precision="3" />
+          <Property Name="modifiedd_at" Type="datetime2" Precision="3" />
+        </EntityType>
+        <EntityType Name="espaces">
+          <Key>
+            <PropertyRef Name="id_espace" />
+          </Key>
+          <Property Name="id_espace" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_espace" Type="nvarchar" MaxLength="50" />
+          <Property Name="nbr_tables" Type="int" />
+        </EntityType>
+        <EntityType Name="fournisseurs">
+          <Key>
+            <PropertyRef Name="id_fournisseur" />
+          </Key>
+          <Property Name="id_fournisseur" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_fournisseur" Type="nvarchar" MaxLength="50" />
+          <Property Name="adresse" Type="nvarchar" MaxLength="40" />
+          <Property Name="email" Type="nvarchar" MaxLength="40" />
+          <Property Name="tel" Type="nvarchar" MaxLength="15" />
+          <Property Name="max_credit" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="total_credit" Type="decimal" Precision="10" Scale="3" />
+        </EntityType>
+        <EntityType Name="infos">
+          <Key>
+            <PropertyRef Name="id_info" />
+          </Key>
+          <Property Name="id_info" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_boutique" Type="nvarchar" MaxLength="50" />
+          <Property Name="logo" Type="image" />
+          <Property Name="adresse" Type="nvarchar" MaxLength="40" />
+          <Property Name="email" Type="nvarchar" MaxLength="40" />
+          <Property Name="tel" Type="nvarchar" MaxLength="15" />
+          <Property Name="Prix_J_N" Type="bit" Nullable="false" />
+          <Property Name="Liveraison" Type="bit" Nullable="false" />
+          <Property Name="Time_Debut_J" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Time_F_J" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="livraison_produit">
+          <Key>
+            <PropertyRef Name="liv" />
+            <PropertyRef Name="produit" />
+          </Key>
+          <Property Name="liv" Type="int" Nullable="false" />
+          <Property Name="produit" Type="int" Nullable="false" />
+          <Property Name="prix_jour" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="prix_nuit" Type="decimal" Precision="10" Scale="3" />
+        </EntityType>
+        <EntityType Name="mode_reg">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mod_reg" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="notes">
+          <Key>
+            <PropertyRef Name="id_note" />
+          </Key>
+          <Property Name="id_note" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cat" Type="int" />
+          <Property Name="note" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="produits">
+          <Key>
+            <PropertyRef Name="id_produit" />
+          </Key>
+          <Property Name="id_produit" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_produit" Type="nvarchar" MaxLength="30" />
+          <Property Name="consom_directe" Type="bit" />
+          <Property Name="image_produit" Type="image" />
+          <Property Name="lieu_préparation" Type="nvarchar" MaxLength="30" />
+          <Property Name="prix_jour" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="prix_nuit" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="categorie_Vent" Type="int" />
+          <Property Name="categorie_Achat" Type="int" />
+          <Property Name="unite_prod" Type="int" />
+          <Property Name="qte_stock" Type="int" />
+        </EntityType>
+        <EntityType Name="reglements">
+          <Key>
+            <PropertyRef Name="id_reg" />
+          </Key>
+          <Property Name="id_reg" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fornisseur" Type="int" />
+          <Property Name="client" Type="int" />
+          <Property Name="date_reg" Type="date" />
+          <Property Name="montant" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="mode_payment" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ste_livraisons">
+          <Key>
+            <PropertyRef Name="id_ste" />
+          </Key>
+          <Property Name="id_ste" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_ste" Type="nvarchar" MaxLength="30" />
+          <Property Name="logo" Type="image" />
+        </EntityType>
+        <EntityType Name="tb_tables">
+          <Key>
+            <PropertyRef Name="id_table" />
+          </Key>
+          <Property Name="id_table" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_table" Type="nvarchar" MaxLength="50" />
+          <Property Name="statu" Type="nvarchar" MaxLength="30" />
+          <Property Name="espace" Type="int" />
+        </EntityType>
+        <EntityType Name="type_charge">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type_charge" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="unites">
+          <Key>
+            <PropertyRef Name="id_unit" />
+          </Key>
+          <Property Name="id_unit" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_unit" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id_user" />
+          </Key>
+          <Property Name="id_user" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_user" Type="nvarchar" MaxLength="50" />
+          <Property Name="adresse" Type="nvarchar" MaxLength="40" />
+          <Property Name="email" Type="nvarchar" MaxLength="40" />
+          <Property Name="tel" Type="nvarchar" MaxLength="15" />
+          <Property Name="mot_passe" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="users_privileges">
+          <Key>
+            <PropertyRef Name="idprivileges" />
+          </Key>
+          <Property Name="idprivileges" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Utilisateur" Type="int" />
+          <Property Name="controle_Panel" Type="bit" />
+          <Property Name="c_aisse" Type="bit" />
+          <Property Name="p_roduits" Type="bit" />
+          <Property Name="s_tock" Type="bit" />
+          <Property Name="c_lients" Type="bit" />
+          <Property Name="f_ournisseurs" Type="bit" />
+          <Property Name="a_chats" Type="bit" />
+          <Property Name="c_harges" Type="bit" />
+          <Property Name="c_ommandes" Type="bit" />
+          <Property Name="s_te_liv" Type="bit" />
+          <Property Name="e_spaces" Type="bit" />
+          <Property Name="u_nites" Type="bit" />
+          <Property Name="c_ategories" Type="bit" />
+          <Property Name="u_tilisateur" Type="bit" />
+          <Property Name="g_eneralite" Type="bit" />
+        </EntityType>
+        <Association Name="FK__achat_det__achat__5812160E">
+          <End Role="achats" Type="Self.achats" Multiplicity="1" />
+          <End Role="achat_details" Type="Self.achat_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="achats">
+              <PropertyRef Name="id_achat" />
+            </Principal>
+            <Dependent Role="achat_details">
+              <PropertyRef Name="achat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__achat_det__produ__59063A47">
+          <End Role="produits" Type="Self.produits" Multiplicity="1" />
+          <End Role="achat_details" Type="Self.achat_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produits">
+              <PropertyRef Name="id_produit" />
+            </Principal>
+            <Dependent Role="achat_details">
+              <PropertyRef Name="produit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__achats__fourniss__5441852A">
+          <End Role="fournisseurs" Type="Self.fournisseurs" Multiplicity="0..1" />
+          <End Role="achats" Type="Self.achats" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fournisseurs">
+              <PropertyRef Name="id_fournisseur" />
+            </Principal>
+            <Dependent Role="achats">
+              <PropertyRef Name="fournisseur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__achats__responsa__5535A963">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="achats" Type="Self.achats" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="achats">
+              <PropertyRef Name="responsable_achat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__charges__respons__5BE2A6F2">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="charges" Type="Self.charges" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="charges">
+              <PropertyRef Name="responsable_charge" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__commande___produ__57DD0BE4">
+          <End Role="produits" Type="Self.produits" Multiplicity="1" />
+          <End Role="commande_details" Type="Self.commande_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produits">
+              <PropertyRef Name="id_produit" />
+            </Principal>
+            <Dependent Role="commande_details">
+              <PropertyRef Name="produit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__commande___produ__690797E6">
+          <End Role="produits" Type="Self.produits" Multiplicity="1" />
+          <End Role="commande_details_annuler" Type="Self.commande_details_annuler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produits">
+              <PropertyRef Name="id_produit" />
+            </Principal>
+            <Dependent Role="commande_details_annuler">
+              <PropertyRef Name="produit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__commande_de__cmd__56E8E7AB">
+          <End Role="commandes" Type="Self.commandes" Multiplicity="1" />
+          <End Role="commande_details" Type="Self.commande_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="commandes">
+              <PropertyRef Name="id_cmd" />
+            </Principal>
+            <Dependent Role="commande_details">
+              <PropertyRef Name="cmd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__commande_de__cmd__681373AD">
+          <End Role="commandes" Type="Self.commandes" Multiplicity="1" />
+          <End Role="commande_details_annuler" Type="Self.commande_details_annuler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="commandes">
+              <PropertyRef Name="id_cmd" />
+            </Principal>
+            <Dependent Role="commande_details_annuler">
+              <PropertyRef Name="cmd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__commandes__clien__4E53A1AA">
+          <End Role="clients" Type="Self.clients" Multiplicity="0..1" />
+          <End Role="commandes" Type="Self.commandes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients">
+              <PropertyRef Name="id_client" />
+            </Principal>
+            <Dependent Role="commandes">
+              <PropertyRef Name="client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__commandes__deliv__531856C7">
+          <End Role="ste_livraisons" Type="Self.ste_livraisons" Multiplicity="0..1" />
+          <End Role="commandes" Type="Self.commandes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ste_livraisons">
+              <PropertyRef Name="id_ste" />
+            </Principal>
+            <Dependent Role="commandes">
+              <PropertyRef Name="delivery_company" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__commandes__respo__4F47C5E3">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="commandes" Type="Self.commandes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="commandes">
+              <PropertyRef Name="responsable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__livraison__produ__4BAC3F29">
+          <End Role="produits" Type="Self.produits" Multiplicity="1" />
+          <End Role="livraison_produit" Type="Self.livraison_produit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produits">
+              <PropertyRef Name="id_produit" />
+            </Principal>
+            <Dependent Role="livraison_produit">
+              <PropertyRef Name="produit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__livraison_p__liv__4AB81AF0">
+          <End Role="ste_livraisons" Type="Self.ste_livraisons" Multiplicity="1" />
+          <End Role="livraison_produit" Type="Self.livraison_produit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ste_livraisons">
+              <PropertyRef Name="id_ste" />
+            </Principal>
+            <Dependent Role="livraison_produit">
+              <PropertyRef Name="liv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__notes__cat__2F10007B">
+          <End Role="categories" Type="Self.categories" Multiplicity="0..1" />
+          <End Role="notes" Type="Self.notes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categories">
+              <PropertyRef Name="id_cat" />
+            </Principal>
+            <Dependent Role="notes">
+              <PropertyRef Name="cat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__produits__catego__29572725">
+          <End Role="categories" Type="Self.categories" Multiplicity="0..1" />
+          <End Role="produits" Type="Self.produits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categories">
+              <PropertyRef Name="id_cat" />
+            </Principal>
+            <Dependent Role="produits">
+              <PropertyRef Name="categorie_Vent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__produits__catego__2A4B4B5E">
+          <End Role="categories" Type="Self.categories" Multiplicity="0..1" />
+          <End Role="produits" Type="Self.produits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categories">
+              <PropertyRef Name="id_cat" />
+            </Principal>
+            <Dependent Role="produits">
+              <PropertyRef Name="categorie_Achat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__produits__unite___2B3F6F97">
+          <End Role="unites" Type="Self.unites" Multiplicity="0..1" />
+          <End Role="produits" Type="Self.produits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="unites">
+              <PropertyRef Name="id_unit" />
+            </Principal>
+            <Dependent Role="produits">
+              <PropertyRef Name="unite_prod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__reglement__clien__5165187F">
+          <End Role="clients" Type="Self.clients" Multiplicity="0..1" />
+          <End Role="reglements" Type="Self.reglements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients">
+              <PropertyRef Name="id_client" />
+            </Principal>
+            <Dependent Role="reglements">
+              <PropertyRef Name="client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__reglement__forni__5070F446">
+          <End Role="fournisseurs" Type="Self.fournisseurs" Multiplicity="0..1" />
+          <End Role="reglements" Type="Self.reglements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fournisseurs">
+              <PropertyRef Name="id_fournisseur" />
+            </Principal>
+            <Dependent Role="reglements">
+              <PropertyRef Name="fornisseur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_tables__espac__35BCFE0A">
+          <End Role="espaces" Type="Self.espaces" Multiplicity="0..1" />
+          <End Role="tb_tables" Type="Self.tb_tables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="espaces">
+              <PropertyRef Name="id_espace" />
+            </Principal>
+            <Dependent Role="tb_tables">
+              <PropertyRef Name="espace" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="allowed_user" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_user" Type="int" Mode="In" />
+          <Parameter Name="place" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="get_all_achat_details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="get_all_achats" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="get_all_attend_cmd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="get_all_categories" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="a_chate" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="get_all_charges" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="get_all_clients" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="get_all_cmd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="get_all_commande_details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="get_all_espaces" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="get_all_fournisseurs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="get_all_infos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="get_all_livraison_produit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="get_all_mode_reg" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="get_all_notes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="get_all_notes_by_categorie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="get_all_produits_achat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="get_all_produits_achat_by_categorie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_cat" Type="int" Mode="In" />
+        </Function>
+        <Function Name="get_all_produits_Achat_by_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_prod" Type="int" Mode="In" />
+        </Function>
+        <Function Name="get_all_produits_vente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="get_all_produits_vente_by_categorie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_cat" Type="int" Mode="In" />
+        </Function>
+        <Function Name="get_all_produits_vente_by_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_prod" Type="int" Mode="In" />
+        </Function>
+        <Function Name="get_all_reglements" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="get_all_ste_livraisons" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="get_all_tables" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="get_all_type_charges" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="get_all_Unite" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="strSearch" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="get_all_unites" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="get_all_users" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="get_auth_user" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mot_passe" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="get_categories_by_str_search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="strSearch" Type="nvarchar" Mode="In" />
+          <Parameter Name="a_chat" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="get_charges_by_str_search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="strSearch" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="get_clients_by_str_search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="strSearch" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="get_cmd_by_str_search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="strSearch" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="get_credit_client_by_str_search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="strSearch" Type="nvarchar" Mode="In" />
+          <Parameter Name="idclient" Type="int" Mode="In" />
+        </Function>
+        <Function Name="get_data_daily_rapport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="get_data_tecket" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_cmd" Type="int" Mode="In" />
+        </Function>
+        <Function Name="get_espaces_by_str_search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="strSearch" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="get_fournisseurs_by_str_search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="strSearch" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="get_montant_total_all_cmd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="get_montant_total_cmd_visiteur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="get_produit_achat_by_str_search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="strSearch" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="get_produit_vente_by_str_search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="strSearch" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="get_reg_client_by_str_search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="strSearch" Type="nvarchar" Mode="In" />
+          <Parameter Name="idclient" Type="int" Mode="In" />
+        </Function>
+        <Function Name="get_steLiv_by_str_search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="strSearch" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="get_users_by_str_search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="strSearch" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="Cfe_shop_dbModelStoreContainer">
+          <EntitySet Name="achat_details" EntityType="Self.achat_details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="achats" EntityType="Self.achats" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="categories" EntityType="Self.categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="charges" EntityType="Self.charges" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="clients" EntityType="Self.clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="commande_details" EntityType="Self.commande_details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="commande_details_annuler" EntityType="Self.commande_details_annuler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="commandes" EntityType="Self.commandes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="espaces" EntityType="Self.espaces" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="fournisseurs" EntityType="Self.fournisseurs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="infos" EntityType="Self.infos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="livraison_produit" EntityType="Self.livraison_produit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mode_reg" EntityType="Self.mode_reg" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="notes" EntityType="Self.notes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="produits" EntityType="Self.produits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="reglements" EntityType="Self.reglements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ste_livraisons" EntityType="Self.ste_livraisons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_tables" EntityType="Self.tb_tables" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_charge" EntityType="Self.type_charge" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="unites" EntityType="Self.unites" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users_privileges" EntityType="Self.users_privileges" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__achat_det__achat__5812160E" Association="Self.FK__achat_det__achat__5812160E">
+            <End Role="achats" EntitySet="achats" />
+            <End Role="achat_details" EntitySet="achat_details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__achat_det__produ__59063A47" Association="Self.FK__achat_det__produ__59063A47">
+            <End Role="produits" EntitySet="produits" />
+            <End Role="achat_details" EntitySet="achat_details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__achats__fourniss__5441852A" Association="Self.FK__achats__fourniss__5441852A">
+            <End Role="fournisseurs" EntitySet="fournisseurs" />
+            <End Role="achats" EntitySet="achats" />
+          </AssociationSet>
+          <AssociationSet Name="FK__achats__responsa__5535A963" Association="Self.FK__achats__responsa__5535A963">
+            <End Role="users" EntitySet="users" />
+            <End Role="achats" EntitySet="achats" />
+          </AssociationSet>
+          <AssociationSet Name="FK__charges__respons__5BE2A6F2" Association="Self.FK__charges__respons__5BE2A6F2">
+            <End Role="users" EntitySet="users" />
+            <End Role="charges" EntitySet="charges" />
+          </AssociationSet>
+          <AssociationSet Name="FK__commande___produ__57DD0BE4" Association="Self.FK__commande___produ__57DD0BE4">
+            <End Role="produits" EntitySet="produits" />
+            <End Role="commande_details" EntitySet="commande_details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__commande___produ__690797E6" Association="Self.FK__commande___produ__690797E6">
+            <End Role="produits" EntitySet="produits" />
+            <End Role="commande_details_annuler" EntitySet="commande_details_annuler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__commande_de__cmd__56E8E7AB" Association="Self.FK__commande_de__cmd__56E8E7AB">
+            <End Role="commandes" EntitySet="commandes" />
+            <End Role="commande_details" EntitySet="commande_details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__commande_de__cmd__681373AD" Association="Self.FK__commande_de__cmd__681373AD">
+            <End Role="commandes" EntitySet="commandes" />
+            <End Role="commande_details_annuler" EntitySet="commande_details_annuler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__commandes__clien__4E53A1AA" Association="Self.FK__commandes__clien__4E53A1AA">
+            <End Role="clients" EntitySet="clients" />
+            <End Role="commandes" EntitySet="commandes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__commandes__deliv__531856C7" Association="Self.FK__commandes__deliv__531856C7">
+            <End Role="ste_livraisons" EntitySet="ste_livraisons" />
+            <End Role="commandes" EntitySet="commandes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__commandes__respo__4F47C5E3" Association="Self.FK__commandes__respo__4F47C5E3">
+            <End Role="users" EntitySet="users" />
+            <End Role="commandes" EntitySet="commandes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__livraison__produ__4BAC3F29" Association="Self.FK__livraison__produ__4BAC3F29">
+            <End Role="produits" EntitySet="produits" />
+            <End Role="livraison_produit" EntitySet="livraison_produit" />
+          </AssociationSet>
+          <AssociationSet Name="FK__livraison_p__liv__4AB81AF0" Association="Self.FK__livraison_p__liv__4AB81AF0">
+            <End Role="ste_livraisons" EntitySet="ste_livraisons" />
+            <End Role="livraison_produit" EntitySet="livraison_produit" />
+          </AssociationSet>
+          <AssociationSet Name="FK__notes__cat__2F10007B" Association="Self.FK__notes__cat__2F10007B">
+            <End Role="categories" EntitySet="categories" />
+            <End Role="notes" EntitySet="notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__produits__catego__29572725" Association="Self.FK__produits__catego__29572725">
+            <End Role="categories" EntitySet="categories" />
+            <End Role="produits" EntitySet="produits" />
+          </AssociationSet>
+          <AssociationSet Name="FK__produits__catego__2A4B4B5E" Association="Self.FK__produits__catego__2A4B4B5E">
+            <End Role="categories" EntitySet="categories" />
+            <End Role="produits" EntitySet="produits" />
+          </AssociationSet>
+          <AssociationSet Name="FK__produits__unite___2B3F6F97" Association="Self.FK__produits__unite___2B3F6F97">
+            <End Role="unites" EntitySet="unites" />
+            <End Role="produits" EntitySet="produits" />
+          </AssociationSet>
+          <AssociationSet Name="FK__reglement__clien__5165187F" Association="Self.FK__reglement__clien__5165187F">
+            <End Role="clients" EntitySet="clients" />
+            <End Role="reglements" EntitySet="reglements" />
+          </AssociationSet>
+          <AssociationSet Name="FK__reglement__forni__5070F446" Association="Self.FK__reglement__forni__5070F446">
+            <End Role="fournisseurs" EntitySet="fournisseurs" />
+            <End Role="reglements" EntitySet="reglements" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_tables__espac__35BCFE0A" Association="Self.FK__tb_tables__espac__35BCFE0A">
+            <End Role="espaces" EntitySet="espaces" />
+            <End Role="tb_tables" EntitySet="tb_tables" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Cfe_shop_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="achat_details">
+          <Key>
+            <PropertyRef Name="achat" />
+            <PropertyRef Name="produit" />
+          </Key>
+          <Property Name="achat" Type="Int32" Nullable="false" />
+          <Property Name="produit" Type="Int32" Nullable="false" />
+          <Property Name="qte" Type="Int32" />
+          <Property Name="prix_vente" Type="Decimal" Precision="10" Scale="3" />
+          <NavigationProperty Name="achat1" Relationship="Self.FK__achat_det__achat__5812160E" FromRole="achat_details" ToRole="achats" />
+          <NavigationProperty Name="produit1" Relationship="Self.FK__achat_det__produ__59063A47" FromRole="achat_details" ToRole="produits" />
+        </EntityType>
+        <EntityType Name="achat">
+          <Key>
+            <PropertyRef Name="id_achat" />
+          </Key>
+          <Property Name="id_achat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date_achat" Type="DateTime" Precision="0" />
+          <Property Name="fournisseur" Type="Int32" />
+          <Property Name="responsable_achat" Type="Int32" />
+          <Property Name="montant_total" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="montant_rest" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="iscredit" Type="Boolean" />
+          <NavigationProperty Name="achat_details" Relationship="Self.FK__achat_det__achat__5812160E" FromRole="achats" ToRole="achat_details" />
+          <NavigationProperty Name="fournisseur1" Relationship="Self.FK__achats__fourniss__5441852A" FromRole="achats" ToRole="fournisseurs" />
+          <NavigationProperty Name="user" Relationship="Self.FK__achats__responsa__5535A963" FromRole="achats" ToRole="users" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="id_cat" />
+          </Key>
+          <Property Name="id_cat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_cat" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="image_cat" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="is_categorie_Achat" Type="Boolean" />
+          <NavigationProperty Name="notes" Relationship="Self.FK__notes__cat__2F10007B" FromRole="categories" ToRole="notes" />
+          <NavigationProperty Name="produits" Relationship="Self.FK__produits__catego__29572725" FromRole="categories" ToRole="produits" />
+          <NavigationProperty Name="produits1" Relationship="Self.FK__produits__catego__2A4B4B5E" FromRole="categories" ToRole="produits" />
+        </EntityType>
+        <EntityType Name="charge">
+          <Key>
+            <PropertyRef Name="id_charge" />
+          </Key>
+          <Property Name="id_charge" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date_charge" Type="DateTime" Precision="0" />
+          <Property Name="responsable_charge" Type="Int32" />
+          <Property Name="montant" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="type_charge" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="mode_reglement" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="desc_charge" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="user" Relationship="Self.FK__charges__respons__5BE2A6F2" FromRole="charges" ToRole="users" />
+        </EntityType>
+        <EntityType Name="client">
+          <Key>
+            <PropertyRef Name="id_client" />
+          </Key>
+          <Property Name="id_client" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_client" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="adresse" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="tel" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="max_credit" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="total_credit" Type="Decimal" Precision="10" Scale="3" />
+          <NavigationProperty Name="commandes" Relationship="Self.FK__commandes__clien__403A8C7D" FromRole="clients" ToRole="commandes" />
+          <NavigationProperty Name="reglements" Relationship="Self.FK__reglement__clien__5165187F" FromRole="clients" ToRole="reglements" />
+        </EntityType>
+        <EntityType Name="commande_details">
+          <Key>
+            <PropertyRef Name="cmd" />
+            <PropertyRef Name="produit" />
+          </Key>
+          <Property Name="cmd" Type="Int32" Nullable="false" />
+          <Property Name="produit" Type="Int32" Nullable="false" />
+          <Property Name="qte_prod" Type="Int32" />
+          <Property Name="note" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="prix_vente" Type="Decimal" Precision="10" Scale="3" />
+          <NavigationProperty Name="produit1" Relationship="Self.FK__commande___produ__47DBAE45" FromRole="commande_details" ToRole="produits" />
+          <NavigationProperty Name="commande" Relationship="Self.FK__commande_de__cmd__46E78A0C" FromRole="commande_details" ToRole="commandes" />
+        </EntityType>
+        <EntityType Name="commande">
+          <Key>
+            <PropertyRef Name="id_cmd" />
+          </Key>
+          <Property Name="id_cmd" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type_cmd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="date_cmd" Type="DateTime" Precision="0" />
+          <Property Name="t_able" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="client" Type="Int32" />
+          <Property Name="responsable" Type="Int32" />
+          <Property Name="enattend" Type="Boolean" />
+          <Property Name="statu" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="montant_total" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="montant_rest" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="isready" Type="Boolean" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="modifiedd_at" Type="DateTime" Precision="3" />
+          <Property Name="delivery_company" Type="Int32" />
+          <NavigationProperty Name="client1" Relationship="Self.FK__commandes__clien__403A8C7D" FromRole="commandes" ToRole="clients" />
+          <NavigationProperty Name="commande_details" Relationship="Self.FK__commande_de__cmd__46E78A0C" FromRole="commandes" ToRole="commande_details" />
+          <NavigationProperty Name="ste_livraisons" Relationship="Self.FK__commandes__deliv__208CD6FA" FromRole="commandes" ToRole="ste_livraisons" />
+          <NavigationProperty Name="user" Relationship="Self.FK__commandes__respo__412EB0B6" FromRole="commandes" ToRole="users" />
+          <NavigationProperty Name="commande_details_annuler" Relationship="Cfe_shop_dbModel.FK__commande_de__cmd__681373AD" FromRole="commande" ToRole="commande_details_annuler" />
+        </EntityType>
+        <EntityType Name="espace">
+          <Key>
+            <PropertyRef Name="id_espace" />
+          </Key>
+          <Property Name="id_espace" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_espace" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nbr_tables" Type="Int32" />
+          <NavigationProperty Name="tb_tables" Relationship="Self.FK__tb_tables__espac__35BCFE0A" FromRole="espaces" ToRole="tb_tables" />
+        </EntityType>
+        <EntityType Name="fournisseur">
+          <Key>
+            <PropertyRef Name="id_fournisseur" />
+          </Key>
+          <Property Name="id_fournisseur" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_fournisseur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="adresse" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="tel" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="max_credit" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="total_credit" Type="Decimal" Precision="10" Scale="3" />
+          <NavigationProperty Name="achats" Relationship="Self.FK__achats__fourniss__5441852A" FromRole="fournisseurs" ToRole="achats" />
+          <NavigationProperty Name="reglements" Relationship="Self.FK__reglement__forni__5070F446" FromRole="fournisseurs" ToRole="reglements" />
+        </EntityType>
+        <EntityType Name="info">
+          <Key>
+            <PropertyRef Name="id_info" />
+          </Key>
+          <Property Name="id_info" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_boutique" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="adresse" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="tel" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Prix_J_N" Type="Boolean" Nullable="false" />
+          <Property Name="Liveraison" Type="Boolean" Nullable="false" />
+          <Property Name="Time_Debut_J" Type="Time" Precision="7" Nullable="false" />
+          <Property Name="Time_F_J" Type="Time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="livraison_produit">
+          <Key>
+            <PropertyRef Name="liv" />
+            <PropertyRef Name="produit" />
+          </Key>
+          <Property Name="liv" Type="Int32" Nullable="false" />
+          <Property Name="produit" Type="Int32" Nullable="false" />
+          <Property Name="prix_jour" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="prix_nuit" Type="Decimal" Precision="10" Scale="3" />
+          <NavigationProperty Name="produit1" Relationship="Self.FK__livraison__produ__4BAC3F29" FromRole="livraison_produit" ToRole="produits" />
+          <NavigationProperty Name="ste_livraisons" Relationship="Self.FK__livraison_p__liv__4AB81AF0" FromRole="livraison_produit" ToRole="ste_livraisons" />
+        </EntityType>
+        <EntityType Name="mode_reg">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mod_reg" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="note">
+          <Key>
+            <PropertyRef Name="id_note" />
+          </Key>
+          <Property Name="id_note" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cat" Type="Int32" />
+          <Property Name="note1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="category" Relationship="Self.FK__notes__cat__2F10007B" FromRole="notes" ToRole="categories" />
+        </EntityType>
+        <EntityType Name="produit">
+          <Key>
+            <PropertyRef Name="id_produit" />
+          </Key>
+          <Property Name="id_produit" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_produit" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="consom_directe" Type="Boolean" />
+          <Property Name="image_produit" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="lieu_préparation" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="prix_jour" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="prix_nuit" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="categorie_Vent" Type="Int32" />
+          <Property Name="categorie_Achat" Type="Int32" />
+          <Property Name="unite_prod" Type="Int32" />
+          <Property Name="qte_stock" Type="Int32" />
+          <NavigationProperty Name="achat_details" Relationship="Self.FK__achat_det__produ__59063A47" FromRole="produits" ToRole="achat_details" />
+          <NavigationProperty Name="category" Relationship="Self.FK__produits__catego__29572725" FromRole="produits" ToRole="categories" />
+          <NavigationProperty Name="category1" Relationship="Self.FK__produits__catego__2A4B4B5E" FromRole="produits" ToRole="categories" />
+          <NavigationProperty Name="commande_details" Relationship="Self.FK__commande___produ__47DBAE45" FromRole="produits" ToRole="commande_details" />
+          <NavigationProperty Name="livraison_produit" Relationship="Self.FK__livraison__produ__4BAC3F29" FromRole="produits" ToRole="livraison_produit" />
+          <NavigationProperty Name="unite" Relationship="Self.FK__produits__unite___2B3F6F97" FromRole="produits" ToRole="unites" />
+          <NavigationProperty Name="commande_details_annuler" Relationship="Cfe_shop_dbModel.FK__commande___produ__690797E6" FromRole="produit" ToRole="commande_details_annuler" />
+        </EntityType>
+        <EntityType Name="reglement">
+          <Key>
+            <PropertyRef Name="id_reg" />
+          </Key>
+          <Property Name="id_reg" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fornisseur" Type="Int32" />
+          <Property Name="client" Type="Int32" />
+          <Property Name="date_reg" Type="DateTime" Precision="0" />
+          <Property Name="montant" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="mode_payment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="client1" Relationship="Self.FK__reglement__clien__5165187F" FromRole="reglements" ToRole="clients" />
+          <NavigationProperty Name="fournisseur" Relationship="Self.FK__reglement__forni__5070F446" FromRole="reglements" ToRole="fournisseurs" />
+        </EntityType>
+        <EntityType Name="ste_livraisons">
+          <Key>
+            <PropertyRef Name="id_ste" />
+          </Key>
+          <Property Name="id_ste" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_ste" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="commandes" Relationship="Self.FK__commandes__deliv__208CD6FA" FromRole="ste_livraisons" ToRole="commandes" />
+          <NavigationProperty Name="livraison_produit" Relationship="Self.FK__livraison_p__liv__4AB81AF0" FromRole="ste_livraisons" ToRole="livraison_produit" />
+        </EntityType>
+        <EntityType Name="tb_tables">
+          <Key>
+            <PropertyRef Name="id_table" />
+          </Key>
+          <Property Name="id_table" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_table" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="statu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="espace" Type="Int32" />
+          <NavigationProperty Name="espace1" Relationship="Self.FK__tb_tables__espac__35BCFE0A" FromRole="tb_tables" ToRole="espaces" />
+        </EntityType>
+        <EntityType Name="type_charge">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type_charge1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="unite">
+          <Key>
+            <PropertyRef Name="id_unit" />
+          </Key>
+          <Property Name="id_unit" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_unit" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="produits" Relationship="Self.FK__produits__unite___2B3F6F97" FromRole="unites" ToRole="produits" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id_user" />
+          </Key>
+          <Property Name="id_user" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_user" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="adresse" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="tel" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="mot_passe" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="achats" Relationship="Self.FK__achats__responsa__5535A963" FromRole="users" ToRole="achats" />
+          <NavigationProperty Name="charges" Relationship="Self.FK__charges__respons__5BE2A6F2" FromRole="users" ToRole="charges" />
+          <NavigationProperty Name="commandes" Relationship="Self.FK__commandes__respo__412EB0B6" FromRole="users" ToRole="commandes" />
+        </EntityType>
+        <EntityType Name="users_privileges">
+          <Key>
+            <PropertyRef Name="idprivileges" />
+          </Key>
+          <Property Name="idprivileges" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Utilisateur" Type="Int32" />
+          <Property Name="controle_Panel" Type="Boolean" />
+          <Property Name="c_aisse" Type="Boolean" />
+          <Property Name="p_roduits" Type="Boolean" />
+          <Property Name="s_tock" Type="Boolean" />
+          <Property Name="c_lients" Type="Boolean" />
+          <Property Name="f_ournisseurs" Type="Boolean" />
+          <Property Name="a_chats" Type="Boolean" />
+          <Property Name="c_harges" Type="Boolean" />
+          <Property Name="c_ommandes" Type="Boolean" />
+          <Property Name="s_te_liv" Type="Boolean" />
+          <Property Name="e_spaces" Type="Boolean" />
+          <Property Name="u_nites" Type="Boolean" />
+          <Property Name="c_ategories" Type="Boolean" />
+          <Property Name="u_tilisateur" Type="Boolean" />
+          <Property Name="g_eneralite" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK__achat_det__achat__5812160E">
+          <End Role="achats" Type="Self.achat" Multiplicity="1" />
+          <End Role="achat_details" Type="Self.achat_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="achats">
+              <PropertyRef Name="id_achat" />
+            </Principal>
+            <Dependent Role="achat_details">
+              <PropertyRef Name="achat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__achat_det__produ__59063A47">
+          <End Role="produits" Type="Self.produit" Multiplicity="1" />
+          <End Role="achat_details" Type="Self.achat_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produits">
+              <PropertyRef Name="id_produit" />
+            </Principal>
+            <Dependent Role="achat_details">
+              <PropertyRef Name="produit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__achats__fourniss__5441852A">
+          <End Role="fournisseurs" Type="Self.fournisseur" Multiplicity="0..1" />
+          <End Role="achats" Type="Self.achat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fournisseurs">
+              <PropertyRef Name="id_fournisseur" />
+            </Principal>
+            <Dependent Role="achats">
+              <PropertyRef Name="fournisseur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__achats__responsa__5535A963">
+          <End Role="users" Type="Self.user" Multiplicity="0..1" />
+          <End Role="achats" Type="Self.achat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="achats">
+              <PropertyRef Name="responsable_achat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__notes__cat__2F10007B">
+          <End Role="categories" Type="Self.category" Multiplicity="0..1" />
+          <End Role="notes" Type="Self.note" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categories">
+              <PropertyRef Name="id_cat" />
+            </Principal>
+            <Dependent Role="notes">
+              <PropertyRef Name="cat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__produits__catego__29572725">
+          <End Role="categories" Type="Self.category" Multiplicity="0..1" />
+          <End Role="produits" Type="Self.produit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categories">
+              <PropertyRef Name="id_cat" />
+            </Principal>
+            <Dependent Role="produits">
+              <PropertyRef Name="categorie_Vent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__produits__catego__2A4B4B5E">
+          <End Role="categories" Type="Self.category" Multiplicity="0..1" />
+          <End Role="produits" Type="Self.produit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categories">
+              <PropertyRef Name="id_cat" />
+            </Principal>
+            <Dependent Role="produits">
+              <PropertyRef Name="categorie_Achat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__charges__respons__5BE2A6F2">
+          <End Role="users" Type="Self.user" Multiplicity="0..1" />
+          <End Role="charges" Type="Self.charge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="charges">
+              <PropertyRef Name="responsable_charge" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__commandes__clien__403A8C7D">
+          <End Role="clients" Type="Self.client" Multiplicity="0..1" />
+          <End Role="commandes" Type="Self.commande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients">
+              <PropertyRef Name="id_client" />
+            </Principal>
+            <Dependent Role="commandes">
+              <PropertyRef Name="client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__reglement__clien__5165187F">
+          <End Role="clients" Type="Self.client" Multiplicity="0..1" />
+          <End Role="reglements" Type="Self.reglement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients">
+              <PropertyRef Name="id_client" />
+            </Principal>
+            <Dependent Role="reglements">
+              <PropertyRef Name="client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__commande___produ__47DBAE45">
+          <End Role="produits" Type="Self.produit" Multiplicity="1" />
+          <End Role="commande_details" Type="Self.commande_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produits">
+              <PropertyRef Name="id_produit" />
+            </Principal>
+            <Dependent Role="commande_details">
+              <PropertyRef Name="produit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__commande_de__cmd__46E78A0C">
+          <End Role="commandes" Type="Self.commande" Multiplicity="1" />
+          <End Role="commande_details" Type="Self.commande_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="commandes">
+              <PropertyRef Name="id_cmd" />
+            </Principal>
+            <Dependent Role="commande_details">
+              <PropertyRef Name="cmd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__commandes__deliv__208CD6FA">
+          <End Role="ste_livraisons" Type="Self.ste_livraisons" Multiplicity="0..1" />
+          <End Role="commandes" Type="Self.commande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ste_livraisons">
+              <PropertyRef Name="id_ste" />
+            </Principal>
+            <Dependent Role="commandes">
+              <PropertyRef Name="delivery_company" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__commandes__respo__412EB0B6">
+          <End Role="users" Type="Self.user" Multiplicity="0..1" />
+          <End Role="commandes" Type="Self.commande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="commandes">
+              <PropertyRef Name="responsable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_tables__espac__35BCFE0A">
+          <End Role="espaces" Type="Self.espace" Multiplicity="0..1" />
+          <End Role="tb_tables" Type="Self.tb_tables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="espaces">
+              <PropertyRef Name="id_espace" />
+            </Principal>
+            <Dependent Role="tb_tables">
+              <PropertyRef Name="espace" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__reglement__forni__5070F446">
+          <End Role="fournisseurs" Type="Self.fournisseur" Multiplicity="0..1" />
+          <End Role="reglements" Type="Self.reglement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fournisseurs">
+              <PropertyRef Name="id_fournisseur" />
+            </Principal>
+            <Dependent Role="reglements">
+              <PropertyRef Name="fornisseur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__livraison__produ__4BAC3F29">
+          <End Role="produits" Type="Self.produit" Multiplicity="1" />
+          <End Role="livraison_produit" Type="Self.livraison_produit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produits">
+              <PropertyRef Name="id_produit" />
+            </Principal>
+            <Dependent Role="livraison_produit">
+              <PropertyRef Name="produit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__livraison_p__liv__4AB81AF0">
+          <End Role="ste_livraisons" Type="Self.ste_livraisons" Multiplicity="1" />
+          <End Role="livraison_produit" Type="Self.livraison_produit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ste_livraisons">
+              <PropertyRef Name="id_ste" />
+            </Principal>
+            <Dependent Role="livraison_produit">
+              <PropertyRef Name="liv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__produits__unite___2B3F6F97">
+          <End Role="unites" Type="Self.unite" Multiplicity="0..1" />
+          <End Role="produits" Type="Self.produit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="unites">
+              <PropertyRef Name="id_unit" />
+            </Principal>
+            <Dependent Role="produits">
+              <PropertyRef Name="unite_prod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Cfe_shop_dbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="achat_details" EntityType="Self.achat_details" />
+          <EntitySet Name="achats" EntityType="Self.achat" />
+          <EntitySet Name="categories" EntityType="Self.category" />
+          <EntitySet Name="charges" EntityType="Self.charge" />
+          <EntitySet Name="clients" EntityType="Self.client" />
+          <EntitySet Name="commande_details" EntityType="Self.commande_details" />
+          <EntitySet Name="commandes" EntityType="Self.commande" />
+          <EntitySet Name="espaces" EntityType="Self.espace" />
+          <EntitySet Name="fournisseurs" EntityType="Self.fournisseur" />
+          <EntitySet Name="infos" EntityType="Self.info" />
+          <EntitySet Name="livraison_produit" EntityType="Self.livraison_produit" />
+          <EntitySet Name="mode_reg" EntityType="Self.mode_reg" />
+          <EntitySet Name="notes" EntityType="Self.note" />
+          <EntitySet Name="produits" EntityType="Self.produit" />
+          <EntitySet Name="reglements" EntityType="Self.reglement" />
+          <EntitySet Name="ste_livraisons" EntityType="Self.ste_livraisons" />
+          <EntitySet Name="tb_tables" EntityType="Self.tb_tables" />
+          <EntitySet Name="type_charge" EntityType="Self.type_charge" />
+          <EntitySet Name="unites" EntityType="Self.unite" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <EntitySet Name="users_privileges" EntityType="Self.users_privileges" />
+          <AssociationSet Name="FK__achat_det__achat__5812160E" Association="Self.FK__achat_det__achat__5812160E">
+            <End Role="achats" EntitySet="achats" />
+            <End Role="achat_details" EntitySet="achat_details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__achat_det__produ__59063A47" Association="Self.FK__achat_det__produ__59063A47">
+            <End Role="produits" EntitySet="produits" />
+            <End Role="achat_details" EntitySet="achat_details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__achats__fourniss__5441852A" Association="Self.FK__achats__fourniss__5441852A">
+            <End Role="fournisseurs" EntitySet="fournisseurs" />
+            <End Role="achats" EntitySet="achats" />
+          </AssociationSet>
+          <AssociationSet Name="FK__achats__responsa__5535A963" Association="Self.FK__achats__responsa__5535A963">
+            <End Role="users" EntitySet="users" />
+            <End Role="achats" EntitySet="achats" />
+          </AssociationSet>
+          <AssociationSet Name="FK__notes__cat__2F10007B" Association="Self.FK__notes__cat__2F10007B">
+            <End Role="categories" EntitySet="categories" />
+            <End Role="notes" EntitySet="notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__produits__catego__29572725" Association="Self.FK__produits__catego__29572725">
+            <End Role="categories" EntitySet="categories" />
+            <End Role="produits" EntitySet="produits" />
+          </AssociationSet>
+          <AssociationSet Name="FK__produits__catego__2A4B4B5E" Association="Self.FK__produits__catego__2A4B4B5E">
+            <End Role="categories" EntitySet="categories" />
+            <End Role="produits" EntitySet="produits" />
+          </AssociationSet>
+          <AssociationSet Name="FK__charges__respons__5BE2A6F2" Association="Self.FK__charges__respons__5BE2A6F2">
+            <End Role="users" EntitySet="users" />
+            <End Role="charges" EntitySet="charges" />
+          </AssociationSet>
+          <AssociationSet Name="FK__commandes__clien__403A8C7D" Association="Self.FK__commandes__clien__403A8C7D">
+            <End Role="clients" EntitySet="clients" />
+            <End Role="commandes" EntitySet="commandes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__reglement__clien__5165187F" Association="Self.FK__reglement__clien__5165187F">
+            <End Role="clients" EntitySet="clients" />
+            <End Role="reglements" EntitySet="reglements" />
+          </AssociationSet>
+          <AssociationSet Name="FK__commande___produ__47DBAE45" Association="Self.FK__commande___produ__47DBAE45">
+            <End Role="produits" EntitySet="produits" />
+            <End Role="commande_details" EntitySet="commande_details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__commande_de__cmd__46E78A0C" Association="Self.FK__commande_de__cmd__46E78A0C">
+            <End Role="commandes" EntitySet="commandes" />
+            <End Role="commande_details" EntitySet="commande_details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__commandes__deliv__208CD6FA" Association="Self.FK__commandes__deliv__208CD6FA">
+            <End Role="ste_livraisons" EntitySet="ste_livraisons" />
+            <End Role="commandes" EntitySet="commandes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__commandes__respo__412EB0B6" Association="Self.FK__commandes__respo__412EB0B6">
+            <End Role="users" EntitySet="users" />
+            <End Role="commandes" EntitySet="commandes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_tables__espac__35BCFE0A" Association="Self.FK__tb_tables__espac__35BCFE0A">
+            <End Role="espaces" EntitySet="espaces" />
+            <End Role="tb_tables" EntitySet="tb_tables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__reglement__forni__5070F446" Association="Self.FK__reglement__forni__5070F446">
+            <End Role="fournisseurs" EntitySet="fournisseurs" />
+            <End Role="reglements" EntitySet="reglements" />
+          </AssociationSet>
+          <AssociationSet Name="FK__livraison__produ__4BAC3F29" Association="Self.FK__livraison__produ__4BAC3F29">
+            <End Role="produits" EntitySet="produits" />
+            <End Role="livraison_produit" EntitySet="livraison_produit" />
+          </AssociationSet>
+          <AssociationSet Name="FK__livraison_p__liv__4AB81AF0" Association="Self.FK__livraison_p__liv__4AB81AF0">
+            <End Role="ste_livraisons" EntitySet="ste_livraisons" />
+            <End Role="livraison_produit" EntitySet="livraison_produit" />
+          </AssociationSet>
+          <AssociationSet Name="FK__produits__unite___2B3F6F97" Association="Self.FK__produits__unite___2B3F6F97">
+            <End Role="unites" EntitySet="unites" />
+            <End Role="produits" EntitySet="produits" />
+          </AssociationSet>
+          <FunctionImport Name="allowed_user">
+            <Parameter Name="id_user" Mode="In" Type="Int32" />
+            <Parameter Name="place" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="get_all_achat_details" ReturnType="Collection(Cfe_shop_dbModel.get_all_achat_details_Result)" />
+          <FunctionImport Name="get_all_achats" ReturnType="Collection(Cfe_shop_dbModel.get_all_achats_Result)" />
+          <FunctionImport Name="get_all_attend_cmd" ReturnType="Collection(Cfe_shop_dbModel.get_all_attend_cmd_Result)" />
+          <FunctionImport Name="get_all_categories" ReturnType="Collection(Cfe_shop_dbModel.get_all_categories_Result)">
+          <Parameter Name="a_chate" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="get_all_charges" ReturnType="Collection(Cfe_shop_dbModel.get_all_charges_Result)" />
+          <FunctionImport Name="get_all_clients" ReturnType="Collection(Cfe_shop_dbModel.get_all_clients_Result)" />
+          <FunctionImport Name="get_all_cmd" ReturnType="Collection(Cfe_shop_dbModel.get_all_cmd_Result)" />
+          <FunctionImport Name="get_all_commande_details" ReturnType="Collection(Cfe_shop_dbModel.get_all_commande_details_Result)" />
+          <FunctionImport Name="get_all_espaces" ReturnType="Collection(Cfe_shop_dbModel.get_all_espaces_Result)" />
+          <FunctionImport Name="get_all_fournisseurs" ReturnType="Collection(Cfe_shop_dbModel.get_all_fournisseurs_Result)" />
+          <FunctionImport Name="get_all_infos" ReturnType="Collection(Cfe_shop_dbModel.get_all_infos_Result)" />
+          <FunctionImport Name="get_all_livraison_produit" ReturnType="Collection(Cfe_shop_dbModel.get_all_livraison_produit_Result)" />
+          <FunctionImport Name="get_all_mode_reg" ReturnType="Collection(Cfe_shop_dbModel.get_all_mode_reg_Result)" />
+          <FunctionImport Name="get_all_notes" ReturnType="Collection(Cfe_shop_dbModel.get_all_notes_Result)" />
+          <FunctionImport Name="get_all_notes_by_categorie" ReturnType="Collection(Cfe_shop_dbModel.get_all_notes_by_categorie_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="get_all_produits_achat" ReturnType="Collection(Cfe_shop_dbModel.get_all_produits_achat_Result)" />
+          <FunctionImport Name="get_all_produits_achat_by_categorie" ReturnType="Collection(Cfe_shop_dbModel.get_all_produits_achat_by_categorie_Result)">
+          <Parameter Name="id_cat" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="get_all_produits_Achat_by_id" ReturnType="Collection(Cfe_shop_dbModel.get_all_produits_Achat_by_id_Result)">
+          <Parameter Name="id_prod" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="get_all_produits_vente" ReturnType="Collection(Cfe_shop_dbModel.get_all_produits_vente_Result)" />
+          <FunctionImport Name="get_all_produits_vente_by_categorie" ReturnType="Collection(Cfe_shop_dbModel.get_all_produits_vente_by_categorie_Result)">
+          <Parameter Name="id_cat" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="get_all_produits_vente_by_id" ReturnType="Collection(Cfe_shop_dbModel.get_all_produits_vente_by_id_Result)">
+          <Parameter Name="id_prod" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="get_all_reglements" ReturnType="Collection(Cfe_shop_dbModel.get_all_reglements_Result)" />
+          <FunctionImport Name="get_all_ste_livraisons" ReturnType="Collection(Cfe_shop_dbModel.get_all_ste_livraisons_Result)" />
+          <FunctionImport Name="get_all_tables" ReturnType="Collection(Cfe_shop_dbModel.get_all_tables_Result)" />
+          <FunctionImport Name="get_all_type_charges" ReturnType="Collection(Cfe_shop_dbModel.get_all_type_charges_Result)" />
+          <FunctionImport Name="get_all_Unite" ReturnType="Collection(Cfe_shop_dbModel.get_all_Unite_Result)">
+          <Parameter Name="strSearch" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="get_all_unites" ReturnType="Collection(Cfe_shop_dbModel.get_all_unites_Result)" />
+          <FunctionImport Name="get_all_users" ReturnType="Collection(Cfe_shop_dbModel.get_all_users_Result)" />
+          <FunctionImport Name="get_auth_user" ReturnType="Collection(Cfe_shop_dbModel.get_auth_user_Result)">
+          <Parameter Name="mot_passe" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="get_categories_by_str_search" ReturnType="Collection(Cfe_shop_dbModel.get_categories_by_str_search_Result)">
+            <Parameter Name="strSearch" Mode="In" Type="String" />
+            <Parameter Name="a_chat" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="get_charges_by_str_search" ReturnType="Collection(Cfe_shop_dbModel.get_charges_by_str_search_Result)">
+          <Parameter Name="strSearch" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="get_clients_by_str_search" ReturnType="Collection(Cfe_shop_dbModel.get_clients_by_str_search_Result)">
+          <Parameter Name="strSearch" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="get_cmd_by_str_search" ReturnType="Collection(Cfe_shop_dbModel.get_cmd_by_str_search_Result)">
+          <Parameter Name="strSearch" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="get_data_daily_rapport" ReturnType="Collection(Decimal)">
+          <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="get_data_tecket" ReturnType="Collection(Cfe_shop_dbModel.get_data_tecket_Result)">
+          <Parameter Name="id_cmd" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="get_espaces_by_str_search" ReturnType="Collection(Cfe_shop_dbModel.get_espaces_by_str_search_Result)">
+          <Parameter Name="strSearch" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="get_fournisseurs_by_str_search" ReturnType="Collection(Cfe_shop_dbModel.get_fournisseurs_by_str_search_Result)">
+          <Parameter Name="strSearch" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="get_montant_total_all_cmd" ReturnType="Collection(Decimal)" />
+          <FunctionImport Name="get_montant_total_cmd_visiteur" ReturnType="Collection(Decimal)" />
+          <FunctionImport Name="get_produit_achat_by_str_search" ReturnType="Collection(Cfe_shop_dbModel.get_produit_achat_by_str_search_Result)">
+          <Parameter Name="strSearch" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="get_produit_vente_by_str_search" ReturnType="Collection(Cfe_shop_dbModel.get_produit_vente_by_str_search_Result)">
+          <Parameter Name="strSearch" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="get_steLiv_by_str_search" ReturnType="Collection(Cfe_shop_dbModel.get_steLiv_by_str_search_Result)">
+          <Parameter Name="strSearch" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="get_users_by_str_search" ReturnType="Collection(Cfe_shop_dbModel.get_users_by_str_search_Result)">
+          <Parameter Name="strSearch" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="commande_details_annuler" EntityType="Cfe_shop_dbModel.commande_details_annuler" />
+          <AssociationSet Name="FK__commande___produ__690797E6" Association="Cfe_shop_dbModel.FK__commande___produ__690797E6">
+            <End Role="produit" EntitySet="produits" />
+            <End Role="commande_details_annuler" EntitySet="commande_details_annuler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__commande_de__cmd__681373AD" Association="Cfe_shop_dbModel.FK__commande_de__cmd__681373AD">
+            <End Role="commande" EntitySet="commandes" />
+            <End Role="commande_details_annuler" EntitySet="commande_details_annuler" />
+          </AssociationSet>
+          <FunctionImport Name="get_credit_client_by_str_search" ReturnType="Collection(Cfe_shop_dbModel.get_credit_client_by_str_search_Result)">
+            <Parameter Name="strSearch" Mode="In" Type="String" />
+            <Parameter Name="idclient" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="get_reg_client_by_str_search" ReturnType="Collection(Cfe_shop_dbModel.get_reg_client_by_str_search_Result)">
+            <Parameter Name="strSearch" Mode="In" Type="String" />
+            <Parameter Name="idclient" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="get_all_achat_details_Result">
+          <Property Type="Int32" Name="achat" Nullable="false" />
+          <Property Type="Int32" Name="produit" Nullable="false" />
+          <Property Type="Int32" Name="qte" Nullable="true" />
+          <Property Type="Decimal" Name="prix_vente" Nullable="true" Precision="10" Scale="3" />
+        </ComplexType>
+        <ComplexType Name="get_all_achats_Result">
+          <Property Type="Int32" Name="id_achat" Nullable="false" />
+          <Property Type="DateTime" Name="date_achat" Nullable="true" />
+          <Property Type="Int32" Name="fournisseur" Nullable="true" />
+          <Property Type="Int32" Name="responsable_achat" Nullable="true" />
+          <Property Type="Decimal" Name="montant_total" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Decimal" Name="montant_rest" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Boolean" Name="iscredit" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="get_all_attend_cmd_Result">
+          <Property Type="Int32" Name="id_cmd" Nullable="false" />
+          <Property Type="String" Name="type_cmd" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="date_cmd" Nullable="true" />
+          <Property Type="String" Name="t_able" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="client" Nullable="true" />
+          <Property Type="Int32" Name="responsable" Nullable="true" />
+          <Property Type="Boolean" Name="enattend" Nullable="true" />
+          <Property Type="String" Name="statu" Nullable="true" MaxLength="40" />
+          <Property Type="Decimal" Name="montant_total" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Decimal" Name="montant_rest" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Boolean" Name="isready" Nullable="true" />
+          <Property Type="DateTime" Name="created_at" Nullable="true" />
+          <Property Type="DateTime" Name="modifiedd_at" Nullable="true" />
+          <Property Type="Int32" Name="delivery_company" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="get_all_categories_Result">
+          <Property Type="Int32" Name="id_cat" Nullable="false" />
+          <Property Type="String" Name="name_cat" Nullable="true" MaxLength="30" />
+          <Property Type="Binary" Name="image_cat" Nullable="true" MaxLength="Max" />
+          <Property Type="Boolean" Name="is_categorie_Achat" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="get_all_charges_Result">
+          <Property Type="Int32" Name="id_charge" Nullable="false" />
+          <Property Type="DateTime" Name="date_charge" Nullable="true" />
+          <Property Type="Int32" Name="responsable_charge" Nullable="true" />
+          <Property Type="Decimal" Name="montant" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="String" Name="type_charge" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="mode_reglement" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="desc_charge" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="id_user" Nullable="false" />
+          <Property Type="String" Name="name_user" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="adresse" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="tel" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="mot_passe" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="get_all_clients_Result">
+          <Property Type="Int32" Name="id_client" Nullable="false" />
+          <Property Type="String" Name="name_client" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="adresse" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="tel" Nullable="true" MaxLength="15" />
+          <Property Type="Decimal" Name="max_credit" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Decimal" Name="total_credit" Nullable="true" Precision="10" Scale="3" />
+        </ComplexType>
+        <ComplexType Name="get_all_cmd_Result">
+          <Property Type="Int32" Name="id_cmd" Nullable="false" />
+          <Property Type="String" Name="type_cmd" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="date_cmd" Nullable="true" />
+          <Property Type="String" Name="t_able" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="client" Nullable="true" />
+          <Property Type="Int32" Name="responsable" Nullable="true" />
+          <Property Type="Boolean" Name="enattend" Nullable="true" />
+          <Property Type="String" Name="statu" Nullable="true" MaxLength="40" />
+          <Property Type="Decimal" Name="montant_total" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Decimal" Name="montant_rest" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Boolean" Name="isready" Nullable="true" />
+          <Property Type="DateTime" Name="created_at" Nullable="true" />
+          <Property Type="DateTime" Name="modifiedd_at" Nullable="true" />
+          <Property Type="Int32" Name="delivery_company" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="get_all_commande_details_Result">
+          <Property Type="Int32" Name="cmd" Nullable="false" />
+          <Property Type="Int32" Name="produit" Nullable="false" />
+          <Property Type="Int32" Name="qte_prod" Nullable="true" />
+          <Property Type="String" Name="note" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="prix_vente" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Int32" Name="id_produit" Nullable="false" />
+          <Property Type="String" Name="name_produit" Nullable="true" MaxLength="30" />
+          <Property Type="Boolean" Name="consom_directe" Nullable="true" />
+          <Property Type="Binary" Name="image_produit" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="lieu_préparation" Nullable="true" MaxLength="30" />
+          <Property Type="Decimal" Name="prix_jour" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Decimal" Name="prix_nuit" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Int32" Name="categorie_Vent" Nullable="true" />
+          <Property Type="Int32" Name="categorie_Achat" Nullable="true" />
+          <Property Type="Int32" Name="unite_prod" Nullable="true" />
+          <Property Type="Int32" Name="qte_stock" Nullable="true" />
+          <Property Type="Int32" Name="id_cmd" Nullable="false" />
+          <Property Type="String" Name="type_cmd" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="date_cmd" Nullable="true" />
+          <Property Type="String" Name="t_able" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="client" Nullable="true" />
+          <Property Type="Int32" Name="responsable" Nullable="true" />
+          <Property Type="Boolean" Name="enattend" Nullable="true" />
+          <Property Type="String" Name="statu" Nullable="true" MaxLength="40" />
+          <Property Type="Decimal" Name="montant_total" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Decimal" Name="montant_rest" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Boolean" Name="isready" Nullable="true" />
+          <Property Type="DateTime" Name="created_at" Nullable="true" />
+          <Property Type="DateTime" Name="modifiedd_at" Nullable="true" />
+          <Property Type="Int32" Name="delivery_company" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="get_all_espaces_Result">
+          <Property Type="Int32" Name="id_espace" Nullable="false" />
+          <Property Type="String" Name="name_espace" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="nbr_tables" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="get_all_fournisseurs_Result">
+          <Property Type="Int32" Name="id_fournisseur" Nullable="false" />
+          <Property Type="String" Name="name_fournisseur" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="adresse" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="tel" Nullable="true" MaxLength="15" />
+          <Property Type="Decimal" Name="max_credit" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Decimal" Name="total_credit" Nullable="true" Precision="10" Scale="3" />
+        </ComplexType>
+        <ComplexType Name="get_all_infos_Result">
+          <Property Type="Int32" Name="id_info" Nullable="false" />
+          <Property Type="String" Name="name_boutique" Nullable="true" MaxLength="50" />
+          <Property Type="Binary" Name="logo" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="adresse" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="tel" Nullable="true" MaxLength="15" />
+        </ComplexType>
+        <ComplexType Name="get_all_livraison_produit_Result">
+          <Property Type="Int32" Name="liv" Nullable="false" />
+          <Property Type="Int32" Name="produit" Nullable="false" />
+          <Property Type="Decimal" Name="prix_jour" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Decimal" Name="prix_nuit" Nullable="true" Precision="10" Scale="3" />
+        </ComplexType>
+        <ComplexType Name="get_all_mode_reg_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="mod_reg" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="get_all_notes_Result">
+          <Property Type="Int32" Name="id_note" Nullable="false" />
+          <Property Type="Int32" Name="cat" Nullable="true" />
+          <Property Type="String" Name="note" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="get_all_notes_by_categorie_Result">
+          <Property Type="Int32" Name="id_note" Nullable="false" />
+          <Property Type="Int32" Name="cat" Nullable="true" />
+          <Property Type="String" Name="note" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="get_all_produits_achat_Result">
+          <Property Type="Int32" Name="id_produit" Nullable="false" />
+          <Property Type="String" Name="name_produit" Nullable="true" MaxLength="30" />
+          <Property Type="Boolean" Name="consom_directe" Nullable="true" />
+          <Property Type="Binary" Name="image_produit" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="lieu_préparation" Nullable="true" MaxLength="30" />
+          <Property Type="Decimal" Name="prix_jour" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Decimal" Name="prix_nuit" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Int32" Name="categorie_Vent" Nullable="true" />
+          <Property Type="Int32" Name="categorie_Achat" Nullable="true" />
+          <Property Type="Int32" Name="unite_prod" Nullable="true" />
+          <Property Type="Int32" Name="qte_stock" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="get_all_produits_achat_by_categorie_Result">
+          <Property Type="Int32" Name="id_produit" Nullable="false" />
+          <Property Type="String" Name="name_produit" Nullable="true" MaxLength="30" />
+          <Property Type="Boolean" Name="consom_directe" Nullable="true" />
+          <Property Type="Binary" Name="image_produit" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="lieu_préparation" Nullable="true" MaxLength="30" />
+          <Property Type="Decimal" Name="prix_jour" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Decimal" Name="prix_nuit" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Int32" Name="categorie_Vent" Nullable="true" />
+          <Property Type="Int32" Name="categorie_Achat" Nullable="true" />
+          <Property Type="Int32" Name="unite_prod" Nullable="true" />
+          <Property Type="Int32" Name="qte_stock" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="get_all_produits_Achat_by_id_Result">
+          <Property Type="Int32" Name="id_produit" Nullable="false" />
+          <Property Type="String" Name="name_produit" Nullable="true" MaxLength="30" />
+          <Property Type="Boolean" Name="consom_directe" Nullable="true" />
+          <Property Type="Binary" Name="image_produit" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="lieu_préparation" Nullable="true" MaxLength="30" />
+          <Property Type="Decimal" Name="prix_jour" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Decimal" Name="prix_nuit" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Int32" Name="categorie_Vent" Nullable="true" />
+          <Property Type="Int32" Name="categorie_Achat" Nullable="true" />
+          <Property Type="Int32" Name="unite_prod" Nullable="true" />
+          <Property Type="Int32" Name="qte_stock" Nullable="true" />
+          <Property Type="Int32" Name="id_cat" Nullable="false" />
+          <Property Type="String" Name="name_cat" Nullable="true" MaxLength="30" />
+          <Property Type="Binary" Name="image_cat" Nullable="true" MaxLength="Max" />
+          <Property Type="Boolean" Name="is_categorie_Achat" Nullable="true" />
+          <Property Type="String" Name="name_unit" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="get_all_produits_vente_Result">
+          <Property Type="Int32" Name="id_produit" Nullable="false" />
+          <Property Type="String" Name="name_produit" Nullable="true" MaxLength="30" />
+          <Property Type="Boolean" Name="consom_directe" Nullable="true" />
+          <Property Type="Binary" Name="image_produit" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="lieu_préparation" Nullable="true" MaxLength="30" />
+          <Property Type="Decimal" Name="prix_jour" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Decimal" Name="prix_nuit" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Int32" Name="categorie_Vent" Nullable="true" />
+          <Property Type="Int32" Name="categorie_Achat" Nullable="true" />
+          <Property Type="Int32" Name="unite_prod" Nullable="true" />
+          <Property Type="Int32" Name="qte_stock" Nullable="true" />
+          <Property Type="String" Name="name_cat" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="get_all_produits_vente_by_categorie_Result">
+          <Property Type="Int32" Name="id_produit" Nullable="false" />
+          <Property Type="String" Name="name_produit" Nullable="true" MaxLength="30" />
+          <Property Type="Boolean" Name="consom_directe" Nullable="true" />
+          <Property Type="Binary" Name="image_produit" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="lieu_préparation" Nullable="true" MaxLength="30" />
+          <Property Type="Decimal" Name="prix_jour" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Decimal" Name="prix_nuit" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Int32" Name="categorie_Vent" Nullable="true" />
+          <Property Type="Int32" Name="categorie_Achat" Nullable="true" />
+          <Property Type="Int32" Name="unite_prod" Nullable="true" />
+          <Property Type="Int32" Name="qte_stock" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="get_all_produits_vente_by_id_Result">
+          <Property Type="Int32" Name="id_produit" Nullable="false" />
+          <Property Type="String" Name="name_produit" Nullable="true" MaxLength="30" />
+          <Property Type="Boolean" Name="consom_directe" Nullable="true" />
+          <Property Type="Binary" Name="image_produit" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="lieu_préparation" Nullable="true" MaxLength="30" />
+          <Property Type="Decimal" Name="prix_jour" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Decimal" Name="prix_nuit" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Int32" Name="categorie_Vent" Nullable="true" />
+          <Property Type="Int32" Name="categorie_Achat" Nullable="true" />
+          <Property Type="Int32" Name="unite_prod" Nullable="true" />
+          <Property Type="Int32" Name="qte_stock" Nullable="true" />
+          <Property Type="Int32" Name="id_cat" Nullable="false" />
+          <Property Type="String" Name="name_cat" Nullable="true" MaxLength="30" />
+          <Property Type="Binary" Name="image_cat" Nullable="true" MaxLength="Max" />
+          <Property Type="Boolean" Name="is_categorie_Achat" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="get_all_reglements_Result">
+          <Property Type="Int32" Name="id_reg" Nullable="false" />
+          <Property Type="Int32" Name="fornisseur" Nullable="true" />
+          <Property Type="Int32" Name="client" Nullable="true" />
+          <Property Type="DateTime" Name="date_reg" Nullable="true" />
+          <Property Type="Decimal" Name="montant" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="String" Name="mode_payment" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="get_all_ste_livraisons_Result">
+          <Property Type="Int32" Name="id_ste" Nullable="false" />
+          <Property Type="String" Name="name_ste" Nullable="true" MaxLength="30" />
+          <Property Type="Binary" Name="logo" Nullable="true" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="get_all_tables_Result">
+          <Property Type="Int32" Name="id_table" Nullable="false" />
+          <Property Type="String" Name="name_table" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="statu" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="espace" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="get_all_type_charges_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="type_charge" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="get_all_Unite_Result">
+          <Property Type="Int32" Name="id_unit" Nullable="false" />
+          <Property Type="String" Name="name_unit" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="get_all_unites_Result">
+          <Property Type="Int32" Name="id_unit" Nullable="false" />
+          <Property Type="String" Name="name_unit" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="get_all_users_Result">
+          <Property Type="Int32" Name="id_user" Nullable="false" />
+          <Property Type="String" Name="name_user" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="adresse" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="tel" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="mot_passe" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="get_auth_user_Result">
+          <Property Type="Int32" Name="id_user" Nullable="false" />
+          <Property Type="String" Name="name_user" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="adresse" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="tel" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="mot_passe" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="get_categories_by_str_search_Result">
+          <Property Type="Int32" Name="id_cat" Nullable="false" />
+          <Property Type="String" Name="name_cat" Nullable="true" MaxLength="30" />
+          <Property Type="Binary" Name="image_cat" Nullable="true" MaxLength="Max" />
+          <Property Type="Boolean" Name="is_categorie_Achat" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="get_charges_by_str_search_Result">
+          <Property Type="Int32" Name="id_charge" Nullable="false" />
+          <Property Type="DateTime" Name="date_charge" Nullable="true" />
+          <Property Type="Int32" Name="responsable_charge" Nullable="true" />
+          <Property Type="Decimal" Name="montant" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="String" Name="type_charge" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="mode_reglement" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="desc_charge" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="name_user" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="get_clients_by_str_search_Result">
+          <Property Type="Int32" Name="id_client" Nullable="false" />
+          <Property Type="String" Name="name_client" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="adresse" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="tel" Nullable="true" MaxLength="15" />
+          <Property Type="Decimal" Name="max_credit" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Decimal" Name="total_credit" Nullable="true" Precision="10" Scale="3" />
+        </ComplexType>
+        <ComplexType Name="get_cmd_by_str_search_Result">
+          <Property Type="Int32" Name="id_cmd" Nullable="false" />
+          <Property Type="String" Name="type_cmd" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="date_cmd" Nullable="true" />
+          <Property Type="String" Name="t_able" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="client" Nullable="true" />
+          <Property Type="Int32" Name="responsable" Nullable="true" />
+          <Property Type="Boolean" Name="enattend" Nullable="true" />
+          <Property Type="String" Name="statu" Nullable="true" MaxLength="40" />
+          <Property Type="Decimal" Name="montant_total" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Decimal" Name="montant_rest" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Boolean" Name="isready" Nullable="true" />
+          <Property Type="DateTime" Name="created_at" Nullable="true" />
+          <Property Type="DateTime" Name="modifiedd_at" Nullable="true" />
+          <Property Type="Int32" Name="delivery_company" Nullable="true" />
+          <Property Type="Int32" Name="id_user" Nullable="false" />
+          <Property Type="String" Name="name_user" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="adresse" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="tel" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="mot_passe" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="id_client" Nullable="false" />
+          <Property Type="String" Name="name_client" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="adresse1" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="email1" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="tel1" Nullable="true" MaxLength="15" />
+          <Property Type="Decimal" Name="max_credit" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Decimal" Name="total_credit" Nullable="true" Precision="10" Scale="3" />
+        </ComplexType>
+        <ComplexType Name="get_data_tecket_Result">
+          <Property Type="Int32" Name="id_cmd" Nullable="false" />
+          <Property Type="String" Name="type_cmd" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="date_cmd" Nullable="true" />
+          <Property Type="String" Name="t_able" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="client" Nullable="true" />
+          <Property Type="Int32" Name="responsable" Nullable="true" />
+          <Property Type="Boolean" Name="enattend" Nullable="true" />
+          <Property Type="String" Name="statu" Nullable="true" MaxLength="40" />
+          <Property Type="Decimal" Name="montant_total" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Decimal" Name="montant_rest" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Boolean" Name="isready" Nullable="true" />
+          <Property Type="DateTime" Name="created_at" Nullable="true" />
+          <Property Type="DateTime" Name="modifiedd_at" Nullable="true" />
+          <Property Type="Int32" Name="delivery_company" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="get_espaces_by_str_search_Result">
+          <Property Type="Int32" Name="id_espace" Nullable="false" />
+          <Property Type="String" Name="name_espace" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="nbr_tables" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="get_fournisseurs_by_str_search_Result">
+          <Property Type="Int32" Name="id_fournisseur" Nullable="false" />
+          <Property Type="String" Name="name_fournisseur" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="adresse" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="tel" Nullable="true" MaxLength="15" />
+          <Property Type="Decimal" Name="max_credit" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Decimal" Name="total_credit" Nullable="true" Precision="10" Scale="3" />
+        </ComplexType>
+        <ComplexType Name="get_produit_achat_by_str_search_Result">
+          <Property Type="Int32" Name="id_produit" Nullable="false" />
+          <Property Type="String" Name="name_produit" Nullable="true" MaxLength="30" />
+          <Property Type="Boolean" Name="consom_directe" Nullable="true" />
+          <Property Type="Binary" Name="image_produit" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="lieu_préparation" Nullable="true" MaxLength="30" />
+          <Property Type="Decimal" Name="prix_jour" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Decimal" Name="prix_nuit" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Int32" Name="categorie_Vent" Nullable="true" />
+          <Property Type="Int32" Name="categorie_Achat" Nullable="true" />
+          <Property Type="Int32" Name="unite_prod" Nullable="true" />
+          <Property Type="Int32" Name="qte_stock" Nullable="true" />
+          <Property Type="Int32" Name="id_cat" Nullable="false" />
+          <Property Type="String" Name="name_cat" Nullable="true" MaxLength="30" />
+          <Property Type="Binary" Name="image_cat" Nullable="true" MaxLength="Max" />
+          <Property Type="Boolean" Name="is_categorie_Achat" Nullable="true" />
+          <Property Type="String" Name="name_unit" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="get_produit_vente_by_str_search_Result">
+          <Property Type="Int32" Name="id_produit" Nullable="false" />
+          <Property Type="String" Name="name_produit" Nullable="true" MaxLength="30" />
+          <Property Type="Boolean" Name="consom_directe" Nullable="true" />
+          <Property Type="Binary" Name="image_produit" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="lieu_préparation" Nullable="true" MaxLength="30" />
+          <Property Type="Decimal" Name="prix_jour" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Decimal" Name="prix_nuit" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Int32" Name="categorie_Vent" Nullable="true" />
+          <Property Type="Int32" Name="categorie_Achat" Nullable="true" />
+          <Property Type="Int32" Name="unite_prod" Nullable="true" />
+          <Property Type="Int32" Name="qte_stock" Nullable="true" />
+          <Property Type="Int32" Name="id_cat" Nullable="false" />
+          <Property Type="String" Name="name_cat" Nullable="true" MaxLength="30" />
+          <Property Type="Binary" Name="image_cat" Nullable="true" MaxLength="Max" />
+          <Property Type="Boolean" Name="is_categorie_Achat" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="get_steLiv_by_str_search_Result">
+          <Property Type="Int32" Name="id_ste" Nullable="false" />
+          <Property Type="String" Name="name_ste" Nullable="true" MaxLength="30" />
+          <Property Type="Binary" Name="logo" Nullable="true" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="get_users_by_str_search_Result">
+          <Property Type="Int32" Name="id_user" Nullable="false" />
+          <Property Type="String" Name="name_user" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="adresse" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="tel" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="mot_passe" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="commande_details_annuler">
+          <Key>
+            <PropertyRef Name="cmd" />
+            <PropertyRef Name="produit" />
+          </Key>
+          <Property Name="cmd" Type="Int32" Nullable="false" />
+          <Property Name="produit" Type="Int32" Nullable="false" />
+          <Property Name="qte_prod" Type="Int32" />
+          <Property Name="note" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="prix_vente" Type="Decimal" Precision="10" Scale="3" />
+          <NavigationProperty Name="produit1" Relationship="Cfe_shop_dbModel.FK__commande___produ__690797E6" FromRole="commande_details_annuler" ToRole="produit" />
+          <NavigationProperty Name="commande" Relationship="Cfe_shop_dbModel.FK__commande_de__cmd__681373AD" FromRole="commande_details_annuler" ToRole="commande" />
+        </EntityType>
+        <Association Name="FK__commande___produ__690797E6">
+          <End Type="Cfe_shop_dbModel.produit" Role="produit" Multiplicity="1" />
+          <End Type="Cfe_shop_dbModel.commande_details_annuler" Role="commande_details_annuler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produit">
+              <PropertyRef Name="id_produit" />
+            </Principal>
+            <Dependent Role="commande_details_annuler">
+              <PropertyRef Name="produit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__commande_de__cmd__681373AD">
+          <End Type="Cfe_shop_dbModel.commande" Role="commande" Multiplicity="1" />
+          <End Type="Cfe_shop_dbModel.commande_details_annuler" Role="commande_details_annuler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="commande">
+              <PropertyRef Name="id_cmd" />
+            </Principal>
+            <Dependent Role="commande_details_annuler">
+              <PropertyRef Name="cmd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="get_credit_client_by_str_search_Result">
+          <Property Type="Int32" Name="id_cmd" Nullable="false" />
+          <Property Type="String" Name="type_cmd" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="date_cmd" Nullable="true" />
+          <Property Type="String" Name="t_able" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="client" Nullable="true" />
+          <Property Type="Int32" Name="responsable" Nullable="true" />
+          <Property Type="Boolean" Name="enattend" Nullable="true" />
+          <Property Type="String" Name="statu" Nullable="true" MaxLength="40" />
+          <Property Type="Decimal" Name="montant_total" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Decimal" Name="montant_rest" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="Int32" Name="delivery_company" Nullable="true" />
+          <Property Type="Boolean" Name="isready" Nullable="true" />
+          <Property Type="DateTime" Name="created_at" Nullable="true" />
+          <Property Type="DateTime" Name="modifiedd_at" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="get_reg_client_by_str_search_Result">
+          <Property Type="Int32" Name="id_reg" Nullable="false" />
+          <Property Type="Int32" Name="fornisseur" Nullable="true" />
+          <Property Type="Int32" Name="client" Nullable="true" />
+          <Property Type="DateTime" Name="date_reg" Nullable="true" />
+          <Property Type="Decimal" Name="montant" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="String" Name="mode_payment" Nullable="true" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Cfe_shop_dbModelStoreContainer" CdmEntityContainer="Cfe_shop_dbEntities">
+          <EntitySetMapping Name="achat_details">
+            <EntityTypeMapping TypeName="Cfe_shop_dbModel.achat_details">
+              <MappingFragment StoreEntitySet="achat_details">
+                <ScalarProperty Name="achat" ColumnName="achat" />
+                <ScalarProperty Name="produit" ColumnName="produit" />
+                <ScalarProperty Name="qte" ColumnName="qte" />
+                <ScalarProperty Name="prix_vente" ColumnName="prix_vente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="achats">
+            <EntityTypeMapping TypeName="Cfe_shop_dbModel.achat">
+              <MappingFragment StoreEntitySet="achats">
+                <ScalarProperty Name="id_achat" ColumnName="id_achat" />
+                <ScalarProperty Name="date_achat" ColumnName="date_achat" />
+                <ScalarProperty Name="fournisseur" ColumnName="fournisseur" />
+                <ScalarProperty Name="responsable_achat" ColumnName="responsable_achat" />
+                <ScalarProperty Name="montant_total" ColumnName="montant_total" />
+                <ScalarProperty Name="montant_rest" ColumnName="montant_rest" />
+                <ScalarProperty Name="iscredit" ColumnName="iscredit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categories">
+            <EntityTypeMapping TypeName="Cfe_shop_dbModel.category">
+              <MappingFragment StoreEntitySet="categories">
+                <ScalarProperty Name="id_cat" ColumnName="id_cat" />
+                <ScalarProperty Name="name_cat" ColumnName="name_cat" />
+                <ScalarProperty Name="image_cat" ColumnName="image_cat" />
+                <ScalarProperty Name="is_categorie_Achat" ColumnName="is_categorie_Achat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="charges">
+            <EntityTypeMapping TypeName="Cfe_shop_dbModel.charge">
+              <MappingFragment StoreEntitySet="charges">
+                <ScalarProperty Name="id_charge" ColumnName="id_charge" />
+                <ScalarProperty Name="date_charge" ColumnName="date_charge" />
+                <ScalarProperty Name="responsable_charge" ColumnName="responsable_charge" />
+                <ScalarProperty Name="montant" ColumnName="montant" />
+                <ScalarProperty Name="type_charge" ColumnName="type_charge" />
+                <ScalarProperty Name="mode_reglement" ColumnName="mode_reglement" />
+                <ScalarProperty Name="desc_charge" ColumnName="desc_charge" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="clients">
+            <EntityTypeMapping TypeName="Cfe_shop_dbModel.client">
+              <MappingFragment StoreEntitySet="clients">
+                <ScalarProperty Name="id_client" ColumnName="id_client" />
+                <ScalarProperty Name="name_client" ColumnName="name_client" />
+                <ScalarProperty Name="adresse" ColumnName="adresse" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="max_credit" ColumnName="max_credit" />
+                <ScalarProperty Name="total_credit" ColumnName="total_credit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="commande_details">
+            <EntityTypeMapping TypeName="Cfe_shop_dbModel.commande_details">
+              <MappingFragment StoreEntitySet="commande_details">
+                <ScalarProperty Name="cmd" ColumnName="cmd" />
+                <ScalarProperty Name="produit" ColumnName="produit" />
+                <ScalarProperty Name="qte_prod" ColumnName="qte_prod" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="prix_vente" ColumnName="prix_vente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="commandes">
+            <EntityTypeMapping TypeName="Cfe_shop_dbModel.commande">
+              <MappingFragment StoreEntitySet="commandes">
+                <ScalarProperty Name="id_cmd" ColumnName="id_cmd" />
+                <ScalarProperty Name="type_cmd" ColumnName="type_cmd" />
+                <ScalarProperty Name="date_cmd" ColumnName="date_cmd" />
+                <ScalarProperty Name="t_able" ColumnName="t_able" />
+                <ScalarProperty Name="client" ColumnName="client" />
+                <ScalarProperty Name="responsable" ColumnName="responsable" />
+                <ScalarProperty Name="enattend" ColumnName="enattend" />
+                <ScalarProperty Name="statu" ColumnName="statu" />
+                <ScalarProperty Name="montant_total" ColumnName="montant_total" />
+                <ScalarProperty Name="montant_rest" ColumnName="montant_rest" />
+                <ScalarProperty Name="isready" ColumnName="isready" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="modifiedd_at" ColumnName="modifiedd_at" />
+                <ScalarProperty Name="delivery_company" ColumnName="delivery_company" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="espaces">
+            <EntityTypeMapping TypeName="Cfe_shop_dbModel.espace">
+              <MappingFragment StoreEntitySet="espaces">
+                <ScalarProperty Name="id_espace" ColumnName="id_espace" />
+                <ScalarProperty Name="name_espace" ColumnName="name_espace" />
+                <ScalarProperty Name="nbr_tables" ColumnName="nbr_tables" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fournisseurs">
+            <EntityTypeMapping TypeName="Cfe_shop_dbModel.fournisseur">
+              <MappingFragment StoreEntitySet="fournisseurs">
+                <ScalarProperty Name="id_fournisseur" ColumnName="id_fournisseur" />
+                <ScalarProperty Name="name_fournisseur" ColumnName="name_fournisseur" />
+                <ScalarProperty Name="adresse" ColumnName="adresse" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="max_credit" ColumnName="max_credit" />
+                <ScalarProperty Name="total_credit" ColumnName="total_credit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="infos">
+            <EntityTypeMapping TypeName="Cfe_shop_dbModel.info">
+              <MappingFragment StoreEntitySet="infos">
+                <ScalarProperty Name="Time_F_J" ColumnName="Time_F_J" />
+                <ScalarProperty Name="Time_Debut_J" ColumnName="Time_Debut_J" />
+                <ScalarProperty Name="Liveraison" ColumnName="Liveraison" />
+                <ScalarProperty Name="Prix_J_N" ColumnName="Prix_J_N" />
+                <ScalarProperty Name="id_info" ColumnName="id_info" />
+                <ScalarProperty Name="name_boutique" ColumnName="name_boutique" />
+                <ScalarProperty Name="logo" ColumnName="logo" />
+                <ScalarProperty Name="adresse" ColumnName="adresse" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="livraison_produit">
+            <EntityTypeMapping TypeName="Cfe_shop_dbModel.livraison_produit">
+              <MappingFragment StoreEntitySet="livraison_produit">
+                <ScalarProperty Name="liv" ColumnName="liv" />
+                <ScalarProperty Name="produit" ColumnName="produit" />
+                <ScalarProperty Name="prix_jour" ColumnName="prix_jour" />
+                <ScalarProperty Name="prix_nuit" ColumnName="prix_nuit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mode_reg">
+            <EntityTypeMapping TypeName="Cfe_shop_dbModel.mode_reg">
+              <MappingFragment StoreEntitySet="mode_reg">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="mod_reg" ColumnName="mod_reg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="notes">
+            <EntityTypeMapping TypeName="Cfe_shop_dbModel.note">
+              <MappingFragment StoreEntitySet="notes">
+                <ScalarProperty Name="id_note" ColumnName="id_note" />
+                <ScalarProperty Name="cat" ColumnName="cat" />
+                <ScalarProperty Name="note1" ColumnName="note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="produits">
+            <EntityTypeMapping TypeName="Cfe_shop_dbModel.produit">
+              <MappingFragment StoreEntitySet="produits">
+                <ScalarProperty Name="id_produit" ColumnName="id_produit" />
+                <ScalarProperty Name="name_produit" ColumnName="name_produit" />
+                <ScalarProperty Name="consom_directe" ColumnName="consom_directe" />
+                <ScalarProperty Name="image_produit" ColumnName="image_produit" />
+                <ScalarProperty Name="lieu_préparation" ColumnName="lieu_préparation" />
+                <ScalarProperty Name="prix_jour" ColumnName="prix_jour" />
+                <ScalarProperty Name="prix_nuit" ColumnName="prix_nuit" />
+                <ScalarProperty Name="categorie_Vent" ColumnName="categorie_Vent" />
+                <ScalarProperty Name="categorie_Achat" ColumnName="categorie_Achat" />
+                <ScalarProperty Name="unite_prod" ColumnName="unite_prod" />
+                <ScalarProperty Name="qte_stock" ColumnName="qte_stock" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reglements">
+            <EntityTypeMapping TypeName="Cfe_shop_dbModel.reglement">
+              <MappingFragment StoreEntitySet="reglements">
+                <ScalarProperty Name="id_reg" ColumnName="id_reg" />
+                <ScalarProperty Name="fornisseur" ColumnName="fornisseur" />
+                <ScalarProperty Name="client" ColumnName="client" />
+                <ScalarProperty Name="date_reg" ColumnName="date_reg" />
+                <ScalarProperty Name="montant" ColumnName="montant" />
+                <ScalarProperty Name="mode_payment" ColumnName="mode_payment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ste_livraisons">
+            <EntityTypeMapping TypeName="Cfe_shop_dbModel.ste_livraisons">
+              <MappingFragment StoreEntitySet="ste_livraisons">
+                <ScalarProperty Name="id_ste" ColumnName="id_ste" />
+                <ScalarProperty Name="name_ste" ColumnName="name_ste" />
+                <ScalarProperty Name="logo" ColumnName="logo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_tables">
+            <EntityTypeMapping TypeName="Cfe_shop_dbModel.tb_tables">
+              <MappingFragment StoreEntitySet="tb_tables">
+                <ScalarProperty Name="id_table" ColumnName="id_table" />
+                <ScalarProperty Name="name_table" ColumnName="name_table" />
+                <ScalarProperty Name="statu" ColumnName="statu" />
+                <ScalarProperty Name="espace" ColumnName="espace" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_charge">
+            <EntityTypeMapping TypeName="Cfe_shop_dbModel.type_charge">
+              <MappingFragment StoreEntitySet="type_charge">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="type_charge1" ColumnName="type_charge" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="unites">
+            <EntityTypeMapping TypeName="Cfe_shop_dbModel.unite">
+              <MappingFragment StoreEntitySet="unites">
+                <ScalarProperty Name="id_unit" ColumnName="id_unit" />
+                <ScalarProperty Name="name_unit" ColumnName="name_unit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="Cfe_shop_dbModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="name_user" ColumnName="name_user" />
+                <ScalarProperty Name="adresse" ColumnName="adresse" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="mot_passe" ColumnName="mot_passe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users_privileges">
+            <EntityTypeMapping TypeName="Cfe_shop_dbModel.users_privileges">
+              <MappingFragment StoreEntitySet="users_privileges">
+                <ScalarProperty Name="idprivileges" ColumnName="idprivileges" />
+                <ScalarProperty Name="id_Utilisateur" ColumnName="id_Utilisateur" />
+                <ScalarProperty Name="controle_Panel" ColumnName="controle_Panel" />
+                <ScalarProperty Name="c_aisse" ColumnName="c_aisse" />
+                <ScalarProperty Name="p_roduits" ColumnName="p_roduits" />
+                <ScalarProperty Name="s_tock" ColumnName="s_tock" />
+                <ScalarProperty Name="c_lients" ColumnName="c_lients" />
+                <ScalarProperty Name="f_ournisseurs" ColumnName="f_ournisseurs" />
+                <ScalarProperty Name="a_chats" ColumnName="a_chats" />
+                <ScalarProperty Name="c_harges" ColumnName="c_harges" />
+                <ScalarProperty Name="c_ommandes" ColumnName="c_ommandes" />
+                <ScalarProperty Name="s_te_liv" ColumnName="s_te_liv" />
+                <ScalarProperty Name="e_spaces" ColumnName="e_spaces" />
+                <ScalarProperty Name="u_nites" ColumnName="u_nites" />
+                <ScalarProperty Name="c_ategories" ColumnName="c_ategories" />
+                <ScalarProperty Name="u_tilisateur" ColumnName="u_tilisateur" />
+                <ScalarProperty Name="g_eneralite" ColumnName="g_eneralite" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="allowed_user" FunctionName="Cfe_shop_dbModel.Store.allowed_user" />
+          <FunctionImportMapping FunctionImportName="get_all_achat_details" FunctionName="Cfe_shop_dbModel.Store.get_all_achat_details">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_all_achat_details_Result">
+                <ScalarProperty Name="achat" ColumnName="achat" />
+                <ScalarProperty Name="produit" ColumnName="produit" />
+                <ScalarProperty Name="qte" ColumnName="qte" />
+                <ScalarProperty Name="prix_vente" ColumnName="prix_vente" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_all_achats" FunctionName="Cfe_shop_dbModel.Store.get_all_achats">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_all_achats_Result">
+                <ScalarProperty Name="id_achat" ColumnName="id_achat" />
+                <ScalarProperty Name="date_achat" ColumnName="date_achat" />
+                <ScalarProperty Name="fournisseur" ColumnName="fournisseur" />
+                <ScalarProperty Name="responsable_achat" ColumnName="responsable_achat" />
+                <ScalarProperty Name="montant_total" ColumnName="montant_total" />
+                <ScalarProperty Name="montant_rest" ColumnName="montant_rest" />
+                <ScalarProperty Name="iscredit" ColumnName="iscredit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_all_attend_cmd" FunctionName="Cfe_shop_dbModel.Store.get_all_attend_cmd">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_all_attend_cmd_Result">
+                <ScalarProperty Name="id_cmd" ColumnName="id_cmd" />
+                <ScalarProperty Name="type_cmd" ColumnName="type_cmd" />
+                <ScalarProperty Name="date_cmd" ColumnName="date_cmd" />
+                <ScalarProperty Name="t_able" ColumnName="t_able" />
+                <ScalarProperty Name="client" ColumnName="client" />
+                <ScalarProperty Name="responsable" ColumnName="responsable" />
+                <ScalarProperty Name="enattend" ColumnName="enattend" />
+                <ScalarProperty Name="statu" ColumnName="statu" />
+                <ScalarProperty Name="montant_total" ColumnName="montant_total" />
+                <ScalarProperty Name="montant_rest" ColumnName="montant_rest" />
+                <ScalarProperty Name="isready" ColumnName="isready" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="modifiedd_at" ColumnName="modifiedd_at" />
+                <ScalarProperty Name="delivery_company" ColumnName="delivery_company" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_all_categories" FunctionName="Cfe_shop_dbModel.Store.get_all_categories">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_all_categories_Result">
+                <ScalarProperty Name="id_cat" ColumnName="id_cat" />
+                <ScalarProperty Name="name_cat" ColumnName="name_cat" />
+                <ScalarProperty Name="image_cat" ColumnName="image_cat" />
+                <ScalarProperty Name="is_categorie_Achat" ColumnName="is_categorie_Achat" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_all_charges" FunctionName="Cfe_shop_dbModel.Store.get_all_charges">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_all_charges_Result">
+                <ScalarProperty Name="id_charge" ColumnName="id_charge" />
+                <ScalarProperty Name="date_charge" ColumnName="date_charge" />
+                <ScalarProperty Name="responsable_charge" ColumnName="responsable_charge" />
+                <ScalarProperty Name="montant" ColumnName="montant" />
+                <ScalarProperty Name="type_charge" ColumnName="type_charge" />
+                <ScalarProperty Name="mode_reglement" ColumnName="mode_reglement" />
+                <ScalarProperty Name="desc_charge" ColumnName="desc_charge" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="name_user" ColumnName="name_user" />
+                <ScalarProperty Name="adresse" ColumnName="adresse" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="mot_passe" ColumnName="mot_passe" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_all_clients" FunctionName="Cfe_shop_dbModel.Store.get_all_clients">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_all_clients_Result">
+                <ScalarProperty Name="id_client" ColumnName="id_client" />
+                <ScalarProperty Name="name_client" ColumnName="name_client" />
+                <ScalarProperty Name="adresse" ColumnName="adresse" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="max_credit" ColumnName="max_credit" />
+                <ScalarProperty Name="total_credit" ColumnName="total_credit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_all_cmd" FunctionName="Cfe_shop_dbModel.Store.get_all_cmd">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_all_cmd_Result">
+                <ScalarProperty Name="id_cmd" ColumnName="id_cmd" />
+                <ScalarProperty Name="type_cmd" ColumnName="type_cmd" />
+                <ScalarProperty Name="date_cmd" ColumnName="date_cmd" />
+                <ScalarProperty Name="t_able" ColumnName="t_able" />
+                <ScalarProperty Name="client" ColumnName="client" />
+                <ScalarProperty Name="responsable" ColumnName="responsable" />
+                <ScalarProperty Name="enattend" ColumnName="enattend" />
+                <ScalarProperty Name="statu" ColumnName="statu" />
+                <ScalarProperty Name="montant_total" ColumnName="montant_total" />
+                <ScalarProperty Name="montant_rest" ColumnName="montant_rest" />
+                <ScalarProperty Name="isready" ColumnName="isready" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="modifiedd_at" ColumnName="modifiedd_at" />
+                <ScalarProperty Name="delivery_company" ColumnName="delivery_company" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_all_commande_details" FunctionName="Cfe_shop_dbModel.Store.get_all_commande_details">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_all_commande_details_Result">
+                <ScalarProperty Name="cmd" ColumnName="cmd" />
+                <ScalarProperty Name="produit" ColumnName="produit" />
+                <ScalarProperty Name="qte_prod" ColumnName="qte_prod" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="prix_vente" ColumnName="prix_vente" />
+                <ScalarProperty Name="id_produit" ColumnName="id_produit" />
+                <ScalarProperty Name="name_produit" ColumnName="name_produit" />
+                <ScalarProperty Name="consom_directe" ColumnName="consom_directe" />
+                <ScalarProperty Name="image_produit" ColumnName="image_produit" />
+                <ScalarProperty Name="lieu_préparation" ColumnName="lieu_préparation" />
+                <ScalarProperty Name="prix_jour" ColumnName="prix_jour" />
+                <ScalarProperty Name="prix_nuit" ColumnName="prix_nuit" />
+                <ScalarProperty Name="categorie_Vent" ColumnName="categorie_Vent" />
+                <ScalarProperty Name="categorie_Achat" ColumnName="categorie_Achat" />
+                <ScalarProperty Name="unite_prod" ColumnName="unite_prod" />
+                <ScalarProperty Name="qte_stock" ColumnName="qte_stock" />
+                <ScalarProperty Name="id_cmd" ColumnName="id_cmd" />
+                <ScalarProperty Name="type_cmd" ColumnName="type_cmd" />
+                <ScalarProperty Name="date_cmd" ColumnName="date_cmd" />
+                <ScalarProperty Name="t_able" ColumnName="t_able" />
+                <ScalarProperty Name="client" ColumnName="client" />
+                <ScalarProperty Name="responsable" ColumnName="responsable" />
+                <ScalarProperty Name="enattend" ColumnName="enattend" />
+                <ScalarProperty Name="statu" ColumnName="statu" />
+                <ScalarProperty Name="montant_total" ColumnName="montant_total" />
+                <ScalarProperty Name="montant_rest" ColumnName="montant_rest" />
+                <ScalarProperty Name="isready" ColumnName="isready" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="modifiedd_at" ColumnName="modifiedd_at" />
+                <ScalarProperty Name="delivery_company" ColumnName="delivery_company" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_all_espaces" FunctionName="Cfe_shop_dbModel.Store.get_all_espaces">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_all_espaces_Result">
+                <ScalarProperty Name="id_espace" ColumnName="id_espace" />
+                <ScalarProperty Name="name_espace" ColumnName="name_espace" />
+                <ScalarProperty Name="nbr_tables" ColumnName="nbr_tables" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_all_fournisseurs" FunctionName="Cfe_shop_dbModel.Store.get_all_fournisseurs">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_all_fournisseurs_Result">
+                <ScalarProperty Name="id_fournisseur" ColumnName="id_fournisseur" />
+                <ScalarProperty Name="name_fournisseur" ColumnName="name_fournisseur" />
+                <ScalarProperty Name="adresse" ColumnName="adresse" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="max_credit" ColumnName="max_credit" />
+                <ScalarProperty Name="total_credit" ColumnName="total_credit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_all_infos" FunctionName="Cfe_shop_dbModel.Store.get_all_infos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_all_infos_Result">
+                <ScalarProperty Name="id_info" ColumnName="id_info" />
+                <ScalarProperty Name="name_boutique" ColumnName="name_boutique" />
+                <ScalarProperty Name="logo" ColumnName="logo" />
+                <ScalarProperty Name="adresse" ColumnName="adresse" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_all_livraison_produit" FunctionName="Cfe_shop_dbModel.Store.get_all_livraison_produit">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_all_livraison_produit_Result">
+                <ScalarProperty Name="liv" ColumnName="liv" />
+                <ScalarProperty Name="produit" ColumnName="produit" />
+                <ScalarProperty Name="prix_jour" ColumnName="prix_jour" />
+                <ScalarProperty Name="prix_nuit" ColumnName="prix_nuit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_all_mode_reg" FunctionName="Cfe_shop_dbModel.Store.get_all_mode_reg">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_all_mode_reg_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="mod_reg" ColumnName="mod_reg" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_all_notes" FunctionName="Cfe_shop_dbModel.Store.get_all_notes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_all_notes_Result">
+                <ScalarProperty Name="id_note" ColumnName="id_note" />
+                <ScalarProperty Name="cat" ColumnName="cat" />
+                <ScalarProperty Name="note" ColumnName="note" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_all_notes_by_categorie" FunctionName="Cfe_shop_dbModel.Store.get_all_notes_by_categorie">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_all_notes_by_categorie_Result">
+                <ScalarProperty Name="id_note" ColumnName="id_note" />
+                <ScalarProperty Name="cat" ColumnName="cat" />
+                <ScalarProperty Name="note" ColumnName="note" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_all_produits_achat" FunctionName="Cfe_shop_dbModel.Store.get_all_produits_achat">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_all_produits_achat_Result">
+                <ScalarProperty Name="id_produit" ColumnName="id_produit" />
+                <ScalarProperty Name="name_produit" ColumnName="name_produit" />
+                <ScalarProperty Name="consom_directe" ColumnName="consom_directe" />
+                <ScalarProperty Name="image_produit" ColumnName="image_produit" />
+                <ScalarProperty Name="lieu_préparation" ColumnName="lieu_préparation" />
+                <ScalarProperty Name="prix_jour" ColumnName="prix_jour" />
+                <ScalarProperty Name="prix_nuit" ColumnName="prix_nuit" />
+                <ScalarProperty Name="categorie_Vent" ColumnName="categorie_Vent" />
+                <ScalarProperty Name="categorie_Achat" ColumnName="categorie_Achat" />
+                <ScalarProperty Name="unite_prod" ColumnName="unite_prod" />
+                <ScalarProperty Name="qte_stock" ColumnName="qte_stock" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_all_produits_achat_by_categorie" FunctionName="Cfe_shop_dbModel.Store.get_all_produits_achat_by_categorie">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_all_produits_achat_by_categorie_Result">
+                <ScalarProperty Name="id_produit" ColumnName="id_produit" />
+                <ScalarProperty Name="name_produit" ColumnName="name_produit" />
+                <ScalarProperty Name="consom_directe" ColumnName="consom_directe" />
+                <ScalarProperty Name="image_produit" ColumnName="image_produit" />
+                <ScalarProperty Name="lieu_préparation" ColumnName="lieu_préparation" />
+                <ScalarProperty Name="prix_jour" ColumnName="prix_jour" />
+                <ScalarProperty Name="prix_nuit" ColumnName="prix_nuit" />
+                <ScalarProperty Name="categorie_Vent" ColumnName="categorie_Vent" />
+                <ScalarProperty Name="categorie_Achat" ColumnName="categorie_Achat" />
+                <ScalarProperty Name="unite_prod" ColumnName="unite_prod" />
+                <ScalarProperty Name="qte_stock" ColumnName="qte_stock" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_all_produits_Achat_by_id" FunctionName="Cfe_shop_dbModel.Store.get_all_produits_Achat_by_id">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_all_produits_Achat_by_id_Result">
+                <ScalarProperty Name="id_produit" ColumnName="id_produit" />
+                <ScalarProperty Name="name_produit" ColumnName="name_produit" />
+                <ScalarProperty Name="consom_directe" ColumnName="consom_directe" />
+                <ScalarProperty Name="image_produit" ColumnName="image_produit" />
+                <ScalarProperty Name="lieu_préparation" ColumnName="lieu_préparation" />
+                <ScalarProperty Name="prix_jour" ColumnName="prix_jour" />
+                <ScalarProperty Name="prix_nuit" ColumnName="prix_nuit" />
+                <ScalarProperty Name="categorie_Vent" ColumnName="categorie_Vent" />
+                <ScalarProperty Name="categorie_Achat" ColumnName="categorie_Achat" />
+                <ScalarProperty Name="unite_prod" ColumnName="unite_prod" />
+                <ScalarProperty Name="qte_stock" ColumnName="qte_stock" />
+                <ScalarProperty Name="id_cat" ColumnName="id_cat" />
+                <ScalarProperty Name="name_cat" ColumnName="name_cat" />
+                <ScalarProperty Name="image_cat" ColumnName="image_cat" />
+                <ScalarProperty Name="is_categorie_Achat" ColumnName="is_categorie_Achat" />
+                <ScalarProperty Name="name_unit" ColumnName="name_unit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_all_produits_vente" FunctionName="Cfe_shop_dbModel.Store.get_all_produits_vente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_all_produits_vente_Result">
+                <ScalarProperty Name="id_produit" ColumnName="id_produit" />
+                <ScalarProperty Name="name_produit" ColumnName="name_produit" />
+                <ScalarProperty Name="consom_directe" ColumnName="consom_directe" />
+                <ScalarProperty Name="image_produit" ColumnName="image_produit" />
+                <ScalarProperty Name="lieu_préparation" ColumnName="lieu_préparation" />
+                <ScalarProperty Name="prix_jour" ColumnName="prix_jour" />
+                <ScalarProperty Name="prix_nuit" ColumnName="prix_nuit" />
+                <ScalarProperty Name="categorie_Vent" ColumnName="categorie_Vent" />
+                <ScalarProperty Name="categorie_Achat" ColumnName="categorie_Achat" />
+                <ScalarProperty Name="unite_prod" ColumnName="unite_prod" />
+                <ScalarProperty Name="qte_stock" ColumnName="qte_stock" />
+                <ScalarProperty Name="name_cat" ColumnName="name_cat" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_all_produits_vente_by_categorie" FunctionName="Cfe_shop_dbModel.Store.get_all_produits_vente_by_categorie">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_all_produits_vente_by_categorie_Result">
+                <ScalarProperty Name="id_produit" ColumnName="id_produit" />
+                <ScalarProperty Name="name_produit" ColumnName="name_produit" />
+                <ScalarProperty Name="consom_directe" ColumnName="consom_directe" />
+                <ScalarProperty Name="image_produit" ColumnName="image_produit" />
+                <ScalarProperty Name="lieu_préparation" ColumnName="lieu_préparation" />
+                <ScalarProperty Name="prix_jour" ColumnName="prix_jour" />
+                <ScalarProperty Name="prix_nuit" ColumnName="prix_nuit" />
+                <ScalarProperty Name="categorie_Vent" ColumnName="categorie_Vent" />
+                <ScalarProperty Name="categorie_Achat" ColumnName="categorie_Achat" />
+                <ScalarProperty Name="unite_prod" ColumnName="unite_prod" />
+                <ScalarProperty Name="qte_stock" ColumnName="qte_stock" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_all_produits_vente_by_id" FunctionName="Cfe_shop_dbModel.Store.get_all_produits_vente_by_id">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_all_produits_vente_by_id_Result">
+                <ScalarProperty Name="id_produit" ColumnName="id_produit" />
+                <ScalarProperty Name="name_produit" ColumnName="name_produit" />
+                <ScalarProperty Name="consom_directe" ColumnName="consom_directe" />
+                <ScalarProperty Name="image_produit" ColumnName="image_produit" />
+                <ScalarProperty Name="lieu_préparation" ColumnName="lieu_préparation" />
+                <ScalarProperty Name="prix_jour" ColumnName="prix_jour" />
+                <ScalarProperty Name="prix_nuit" ColumnName="prix_nuit" />
+                <ScalarProperty Name="categorie_Vent" ColumnName="categorie_Vent" />
+                <ScalarProperty Name="categorie_Achat" ColumnName="categorie_Achat" />
+                <ScalarProperty Name="unite_prod" ColumnName="unite_prod" />
+                <ScalarProperty Name="qte_stock" ColumnName="qte_stock" />
+                <ScalarProperty Name="id_cat" ColumnName="id_cat" />
+                <ScalarProperty Name="name_cat" ColumnName="name_cat" />
+                <ScalarProperty Name="image_cat" ColumnName="image_cat" />
+                <ScalarProperty Name="is_categorie_Achat" ColumnName="is_categorie_Achat" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_all_reglements" FunctionName="Cfe_shop_dbModel.Store.get_all_reglements">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_all_reglements_Result">
+                <ScalarProperty Name="id_reg" ColumnName="id_reg" />
+                <ScalarProperty Name="fornisseur" ColumnName="fornisseur" />
+                <ScalarProperty Name="client" ColumnName="client" />
+                <ScalarProperty Name="date_reg" ColumnName="date_reg" />
+                <ScalarProperty Name="montant" ColumnName="montant" />
+                <ScalarProperty Name="mode_payment" ColumnName="mode_payment" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_all_ste_livraisons" FunctionName="Cfe_shop_dbModel.Store.get_all_ste_livraisons">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_all_ste_livraisons_Result">
+                <ScalarProperty Name="id_ste" ColumnName="id_ste" />
+                <ScalarProperty Name="name_ste" ColumnName="name_ste" />
+                <ScalarProperty Name="logo" ColumnName="logo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_all_tables" FunctionName="Cfe_shop_dbModel.Store.get_all_tables">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_all_tables_Result">
+                <ScalarProperty Name="id_table" ColumnName="id_table" />
+                <ScalarProperty Name="name_table" ColumnName="name_table" />
+                <ScalarProperty Name="statu" ColumnName="statu" />
+                <ScalarProperty Name="espace" ColumnName="espace" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_all_type_charges" FunctionName="Cfe_shop_dbModel.Store.get_all_type_charges">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_all_type_charges_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="type_charge" ColumnName="type_charge" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_all_Unite" FunctionName="Cfe_shop_dbModel.Store.get_all_Unite">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_all_Unite_Result">
+                <ScalarProperty Name="id_unit" ColumnName="id_unit" />
+                <ScalarProperty Name="name_unit" ColumnName="name_unit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_all_unites" FunctionName="Cfe_shop_dbModel.Store.get_all_unites">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_all_unites_Result">
+                <ScalarProperty Name="id_unit" ColumnName="id_unit" />
+                <ScalarProperty Name="name_unit" ColumnName="name_unit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_all_users" FunctionName="Cfe_shop_dbModel.Store.get_all_users">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_all_users_Result">
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="name_user" ColumnName="name_user" />
+                <ScalarProperty Name="adresse" ColumnName="adresse" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="mot_passe" ColumnName="mot_passe" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_auth_user" FunctionName="Cfe_shop_dbModel.Store.get_auth_user">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_auth_user_Result">
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="name_user" ColumnName="name_user" />
+                <ScalarProperty Name="adresse" ColumnName="adresse" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="mot_passe" ColumnName="mot_passe" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_categories_by_str_search" FunctionName="Cfe_shop_dbModel.Store.get_categories_by_str_search">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_categories_by_str_search_Result">
+                <ScalarProperty Name="id_cat" ColumnName="id_cat" />
+                <ScalarProperty Name="name_cat" ColumnName="name_cat" />
+                <ScalarProperty Name="image_cat" ColumnName="image_cat" />
+                <ScalarProperty Name="is_categorie_Achat" ColumnName="is_categorie_Achat" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_charges_by_str_search" FunctionName="Cfe_shop_dbModel.Store.get_charges_by_str_search">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_charges_by_str_search_Result">
+                <ScalarProperty Name="id_charge" ColumnName="id_charge" />
+                <ScalarProperty Name="date_charge" ColumnName="date_charge" />
+                <ScalarProperty Name="responsable_charge" ColumnName="responsable_charge" />
+                <ScalarProperty Name="montant" ColumnName="montant" />
+                <ScalarProperty Name="type_charge" ColumnName="type_charge" />
+                <ScalarProperty Name="mode_reglement" ColumnName="mode_reglement" />
+                <ScalarProperty Name="desc_charge" ColumnName="desc_charge" />
+                <ScalarProperty Name="name_user" ColumnName="name_user" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_clients_by_str_search" FunctionName="Cfe_shop_dbModel.Store.get_clients_by_str_search">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_clients_by_str_search_Result">
+                <ScalarProperty Name="id_client" ColumnName="id_client" />
+                <ScalarProperty Name="name_client" ColumnName="name_client" />
+                <ScalarProperty Name="adresse" ColumnName="adresse" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="max_credit" ColumnName="max_credit" />
+                <ScalarProperty Name="total_credit" ColumnName="total_credit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_cmd_by_str_search" FunctionName="Cfe_shop_dbModel.Store.get_cmd_by_str_search">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_cmd_by_str_search_Result">
+                <ScalarProperty Name="id_cmd" ColumnName="id_cmd" />
+                <ScalarProperty Name="type_cmd" ColumnName="type_cmd" />
+                <ScalarProperty Name="date_cmd" ColumnName="date_cmd" />
+                <ScalarProperty Name="t_able" ColumnName="t_able" />
+                <ScalarProperty Name="client" ColumnName="client" />
+                <ScalarProperty Name="responsable" ColumnName="responsable" />
+                <ScalarProperty Name="enattend" ColumnName="enattend" />
+                <ScalarProperty Name="statu" ColumnName="statu" />
+                <ScalarProperty Name="montant_total" ColumnName="montant_total" />
+                <ScalarProperty Name="montant_rest" ColumnName="montant_rest" />
+                <ScalarProperty Name="isready" ColumnName="isready" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="modifiedd_at" ColumnName="modifiedd_at" />
+                <ScalarProperty Name="delivery_company" ColumnName="delivery_company" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="name_user" ColumnName="name_user" />
+                <ScalarProperty Name="adresse" ColumnName="adresse" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="mot_passe" ColumnName="mot_passe" />
+                <ScalarProperty Name="id_client" ColumnName="id_client" />
+                <ScalarProperty Name="name_client" ColumnName="name_client" />
+                <ScalarProperty Name="adresse1" ColumnName="adresse1" />
+                <ScalarProperty Name="email1" ColumnName="email1" />
+                <ScalarProperty Name="tel1" ColumnName="tel1" />
+                <ScalarProperty Name="max_credit" ColumnName="max_credit" />
+                <ScalarProperty Name="total_credit" ColumnName="total_credit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_data_daily_rapport" FunctionName="Cfe_shop_dbModel.Store.get_data_daily_rapport" />
+          <FunctionImportMapping FunctionImportName="get_data_tecket" FunctionName="Cfe_shop_dbModel.Store.get_data_tecket">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_data_tecket_Result">
+                <ScalarProperty Name="id_cmd" ColumnName="id_cmd" />
+                <ScalarProperty Name="type_cmd" ColumnName="type_cmd" />
+                <ScalarProperty Name="date_cmd" ColumnName="date_cmd" />
+                <ScalarProperty Name="t_able" ColumnName="t_able" />
+                <ScalarProperty Name="client" ColumnName="client" />
+                <ScalarProperty Name="responsable" ColumnName="responsable" />
+                <ScalarProperty Name="enattend" ColumnName="enattend" />
+                <ScalarProperty Name="statu" ColumnName="statu" />
+                <ScalarProperty Name="montant_total" ColumnName="montant_total" />
+                <ScalarProperty Name="montant_rest" ColumnName="montant_rest" />
+                <ScalarProperty Name="isready" ColumnName="isready" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="modifiedd_at" ColumnName="modifiedd_at" />
+                <ScalarProperty Name="delivery_company" ColumnName="delivery_company" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_espaces_by_str_search" FunctionName="Cfe_shop_dbModel.Store.get_espaces_by_str_search">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_espaces_by_str_search_Result">
+                <ScalarProperty Name="id_espace" ColumnName="id_espace" />
+                <ScalarProperty Name="name_espace" ColumnName="name_espace" />
+                <ScalarProperty Name="nbr_tables" ColumnName="nbr_tables" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_fournisseurs_by_str_search" FunctionName="Cfe_shop_dbModel.Store.get_fournisseurs_by_str_search">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_fournisseurs_by_str_search_Result">
+                <ScalarProperty Name="id_fournisseur" ColumnName="id_fournisseur" />
+                <ScalarProperty Name="name_fournisseur" ColumnName="name_fournisseur" />
+                <ScalarProperty Name="adresse" ColumnName="adresse" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="max_credit" ColumnName="max_credit" />
+                <ScalarProperty Name="total_credit" ColumnName="total_credit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_montant_total_all_cmd" FunctionName="Cfe_shop_dbModel.Store.get_montant_total_all_cmd" />
+          <FunctionImportMapping FunctionImportName="get_montant_total_cmd_visiteur" FunctionName="Cfe_shop_dbModel.Store.get_montant_total_cmd_visiteur" />
+          <FunctionImportMapping FunctionImportName="get_produit_achat_by_str_search" FunctionName="Cfe_shop_dbModel.Store.get_produit_achat_by_str_search">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_produit_achat_by_str_search_Result">
+                <ScalarProperty Name="id_produit" ColumnName="id_produit" />
+                <ScalarProperty Name="name_produit" ColumnName="name_produit" />
+                <ScalarProperty Name="consom_directe" ColumnName="consom_directe" />
+                <ScalarProperty Name="image_produit" ColumnName="image_produit" />
+                <ScalarProperty Name="lieu_préparation" ColumnName="lieu_préparation" />
+                <ScalarProperty Name="prix_jour" ColumnName="prix_jour" />
+                <ScalarProperty Name="prix_nuit" ColumnName="prix_nuit" />
+                <ScalarProperty Name="categorie_Vent" ColumnName="categorie_Vent" />
+                <ScalarProperty Name="categorie_Achat" ColumnName="categorie_Achat" />
+                <ScalarProperty Name="unite_prod" ColumnName="unite_prod" />
+                <ScalarProperty Name="qte_stock" ColumnName="qte_stock" />
+                <ScalarProperty Name="id_cat" ColumnName="id_cat" />
+                <ScalarProperty Name="name_cat" ColumnName="name_cat" />
+                <ScalarProperty Name="image_cat" ColumnName="image_cat" />
+                <ScalarProperty Name="is_categorie_Achat" ColumnName="is_categorie_Achat" />
+                <ScalarProperty Name="name_unit" ColumnName="name_unit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_produit_vente_by_str_search" FunctionName="Cfe_shop_dbModel.Store.get_produit_vente_by_str_search">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_produit_vente_by_str_search_Result">
+                <ScalarProperty Name="id_produit" ColumnName="id_produit" />
+                <ScalarProperty Name="name_produit" ColumnName="name_produit" />
+                <ScalarProperty Name="consom_directe" ColumnName="consom_directe" />
+                <ScalarProperty Name="image_produit" ColumnName="image_produit" />
+                <ScalarProperty Name="lieu_préparation" ColumnName="lieu_préparation" />
+                <ScalarProperty Name="prix_jour" ColumnName="prix_jour" />
+                <ScalarProperty Name="prix_nuit" ColumnName="prix_nuit" />
+                <ScalarProperty Name="categorie_Vent" ColumnName="categorie_Vent" />
+                <ScalarProperty Name="categorie_Achat" ColumnName="categorie_Achat" />
+                <ScalarProperty Name="unite_prod" ColumnName="unite_prod" />
+                <ScalarProperty Name="qte_stock" ColumnName="qte_stock" />
+                <ScalarProperty Name="id_cat" ColumnName="id_cat" />
+                <ScalarProperty Name="name_cat" ColumnName="name_cat" />
+                <ScalarProperty Name="image_cat" ColumnName="image_cat" />
+                <ScalarProperty Name="is_categorie_Achat" ColumnName="is_categorie_Achat" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_steLiv_by_str_search" FunctionName="Cfe_shop_dbModel.Store.get_steLiv_by_str_search">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_steLiv_by_str_search_Result">
+                <ScalarProperty Name="id_ste" ColumnName="id_ste" />
+                <ScalarProperty Name="name_ste" ColumnName="name_ste" />
+                <ScalarProperty Name="logo" ColumnName="logo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_users_by_str_search" FunctionName="Cfe_shop_dbModel.Store.get_users_by_str_search">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_users_by_str_search_Result">
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="name_user" ColumnName="name_user" />
+                <ScalarProperty Name="adresse" ColumnName="adresse" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="mot_passe" ColumnName="mot_passe" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="commande_details_annuler">
+            <EntityTypeMapping TypeName="Cfe_shop_dbModel.commande_details_annuler">
+              <MappingFragment StoreEntitySet="commande_details_annuler">
+                <ScalarProperty Name="prix_vente" ColumnName="prix_vente" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="qte_prod" ColumnName="qte_prod" />
+                <ScalarProperty Name="produit" ColumnName="produit" />
+                <ScalarProperty Name="cmd" ColumnName="cmd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="get_credit_client_by_str_search" FunctionName="Cfe_shop_dbModel.Store.get_credit_client_by_str_search">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_credit_client_by_str_search_Result">
+                <ScalarProperty Name="id_cmd" ColumnName="id_cmd" />
+                <ScalarProperty Name="type_cmd" ColumnName="type_cmd" />
+                <ScalarProperty Name="date_cmd" ColumnName="date_cmd" />
+                <ScalarProperty Name="t_able" ColumnName="t_able" />
+                <ScalarProperty Name="client" ColumnName="client" />
+                <ScalarProperty Name="responsable" ColumnName="responsable" />
+                <ScalarProperty Name="enattend" ColumnName="enattend" />
+                <ScalarProperty Name="statu" ColumnName="statu" />
+                <ScalarProperty Name="montant_total" ColumnName="montant_total" />
+                <ScalarProperty Name="montant_rest" ColumnName="montant_rest" />
+                <ScalarProperty Name="delivery_company" ColumnName="delivery_company" />
+                <ScalarProperty Name="isready" ColumnName="isready" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="modifiedd_at" ColumnName="modifiedd_at" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_reg_client_by_str_search" FunctionName="Cfe_shop_dbModel.Store.get_reg_client_by_str_search">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cfe_shop_dbModel.get_reg_client_by_str_search_Result">
+                <ScalarProperty Name="id_reg" ColumnName="id_reg" />
+                <ScalarProperty Name="fornisseur" ColumnName="fornisseur" />
+                <ScalarProperty Name="client" ColumnName="client" />
+                <ScalarProperty Name="date_reg" ColumnName="date_reg" />
+                <ScalarProperty Name="montant" ColumnName="montant" />
+                <ScalarProperty Name="mode_payment" ColumnName="mode_payment" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

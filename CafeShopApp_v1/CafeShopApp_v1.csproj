@@ -1,0 +1,867 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BDB458F2-48C5-440F-BF7A-790997273C89}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>CafeShopApp_v1</RootNamespace>
+    <AssemblyName>CafeShopApp_v1</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bunifu.Licensing, Version=3.2.0.0, Culture=neutral, PublicKeyToken=f89b4760ba7dcb6b" />
+    <Reference Include="Bunifu.UI.WinForms.BunifuButton">
+      <HintPath>..\..\..\..\Desktop\Bunifu_UI_WinForms_v4.1.1_Downloadly.ir\Bunifu UI WinForms v4.1.1\Bunifu.UI.WinForms.BunifuButton.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuDatePicker">
+      <HintPath>..\..\..\..\Desktop\Bunifu_UI_WinForms_v4.1.1_Downloadly.ir\Bunifu UI WinForms v4.1.1\Bunifu.UI.WinForms.BunifuDatePicker.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuDropdown">
+      <HintPath>..\..\..\..\Desktop\Bunifu_UI_WinForms_v4.1.1_Downloadly.ir\Bunifu UI WinForms v4.1.1\Bunifu.UI.WinForms.BunifuDropdown.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuPanel">
+      <HintPath>..\..\..\..\Desktop\Bunifu_UI_WinForms_v4.1.1_Downloadly.ir\Bunifu UI WinForms v4.1.1\Bunifu.UI.WinForms.BunifuPanel.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuPictureBox">
+      <HintPath>..\..\..\..\Desktop\Bunifu_UI_WinForms_v4.1.1_Downloadly.ir\Bunifu UI WinForms v4.1.1\Bunifu.UI.WinForms.BunifuPictureBox.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuRadioButton">
+      <HintPath>..\..\..\..\Desktop\Bunifu_UI_WinForms_v4.1.1_Downloadly.ir\Bunifu UI WinForms v4.1.1\Bunifu.UI.WinForms.BunifuRadioButton.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuScrollBar">
+      <HintPath>..\..\..\..\Desktop\Bunifu_UI_WinForms_v4.1.1_Downloadly.ir\Bunifu UI WinForms v4.1.1\Bunifu.UI.WinForms.BunifuScrollBar.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuShadowPanel">
+      <HintPath>..\..\..\..\Desktop\Bunifu_UI_WinForms_v4.1.1_Downloadly.ir\Bunifu UI WinForms v4.1.1\Bunifu.UI.WinForms.BunifuShadowPanel.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuSlider">
+      <HintPath>..\..\..\..\Desktop\Bunifu_UI_WinForms_v4.1.1_Downloadly.ir\Bunifu UI WinForms v4.1.1\Bunifu.UI.WinForms.BunifuSlider.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuTextbox">
+      <HintPath>..\..\..\..\Desktop\Bunifu_UI_WinForms_v4.1.1_Downloadly.ir\Bunifu UI WinForms v4.1.1\Bunifu.UI.WinForms.BunifuTextbox.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu_UI_v1.52">
+      <HintPath>..\..\..\..\Downloads\Bunifu_UI_v1.52.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BL\achat.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\achat_details.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\category.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\Cfe_shop_db.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Cfe_shop_db.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\Cfe_shop_db.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\Cfe_shop_db.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Cfe_shop_db.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="BL\charge.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\client.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\commande.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\commande_details.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\commande_details_annuler.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\espace.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\fournisseur.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_all_achats_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_all_achat_details_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_all_attend_cmd_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_all_categories_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_all_charges_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_all_clients_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_all_cmd_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_all_commande_details_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_all_espaces_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_all_fournisseurs_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_all_infos_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_all_livraison_produit_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_all_mode_reg_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_all_notes_by_categorie_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_all_notes_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_all_produits_achat_by_categorie_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_all_produits_Achat_by_id_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_all_produits_achat_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_all_produits_vente_by_categorie_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_all_produits_vente_by_id_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_all_produits_vente_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_all_reglements_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_all_ste_livraisons_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_all_tables_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_all_type_charges_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_all_unites_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_all_Unite_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_all_users_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_auth_user_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_categories_by_str_search_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_charges_by_str_search_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_clients_by_str_search_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_cmd_by_str_search_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_credit_client_by_str_search_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_data_tecket_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_espaces_by_str_search_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_fournisseurs_by_str_search_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_produit_achat_by_str_search_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_produit_vente_by_str_search_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_reg_client_by_str_search_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_steLiv_by_str_search_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\get_users_by_str_search_Result.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\globalMethods.cs" />
+    <Compile Include="BL\info.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\livraison_produit.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\mode_reg.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\note.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\produit.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\reglement.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\ste_livraisons.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\tb_tables.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\type_charge.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\unite.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\user.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BL\users_privileges.cs">
+      <DependentUpon>Cfe_shop_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PL\AllChargesForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\AllChargesForm.Designer.cs">
+      <DependentUpon>AllChargesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\AllClientsForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\AllClientsForm.Designer.cs">
+      <DependentUpon>AllClientsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\AllCmdForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\AllCmdForm.Designer.cs">
+      <DependentUpon>AllCmdForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\AllCreditClientForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\AllCreditClientForm.Designer.cs">
+      <DependentUpon>AllCreditClientForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\AllDetailsCmdForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\AllDetailsCmdForm.Designer.cs">
+      <DependentUpon>AllDetailsCmdForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\AllFournisseursForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\AllFournisseursForm.Designer.cs">
+      <DependentUpon>AllFournisseursForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\AllProduitsAchat.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\AllProduitsAchat.Designer.cs">
+      <DependentUpon>AllProduitsAchat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\AllProduitsVente.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\AllProduitsVente.Designer.cs">
+      <DependentUpon>AllProduitsVente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\AllRegClientForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\AllRegClientForm.Designer.cs">
+      <DependentUpon>AllRegClientForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\AllUserForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\AllUserForm.Designer.cs">
+      <DependentUpon>AllUserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\AttendCmd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\AttendCmd.Designer.cs">
+      <DependentUpon>AttendCmd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\CaisseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\CaisseForm.Designer.cs">
+      <DependentUpon>CaisseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\CategoriesForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\CategoriesForm.Designer.cs">
+      <DependentUpon>CategoriesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\DashboardForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\DashboardForm.Designer.cs">
+      <DependentUpon>DashboardForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\DesignCode\Methods.cs" />
+    <Compile Include="PL\espacesForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\espacesForm.Designer.cs">
+      <DependentUpon>espacesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\Generalite.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\Generalite.Designer.cs">
+      <DependentUpon>Generalite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\mainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\mainForm.Designer.cs">
+      <DependentUpon>mainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\NewChargeForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\NewChargeForm.Designer.cs">
+      <DependentUpon>NewChargeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\NewClientForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\NewClientForm.Designer.cs">
+      <DependentUpon>NewClientForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\NewFournisseurForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\NewFournisseurForm.Designer.cs">
+      <DependentUpon>NewFournisseurForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\NewProduitForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\NewProduitForm.Designer.cs">
+      <DependentUpon>NewProduitForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\NewRegClientForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\NewRegClientForm.Designer.cs">
+      <DependentUpon>NewRegClientForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\NewUserForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\NewUserForm.Designer.cs">
+      <DependentUpon>NewUserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\PopUps\ChargeInfoPopUP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\PopUps\ChargeInfoPopUP.Designer.cs">
+      <DependentUpon>ChargeInfoPopUP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\PopUps\ChargePopUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\PopUps\ChargePopUp.Designer.cs">
+      <DependentUpon>ChargePopUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\PopUps\PopUpsCaisse\MergeTablePopUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\PopUps\PopUpsCaisse\MergeTablePopUp.Designer.cs">
+      <DependentUpon>MergeTablePopUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\PopUps\PopUpsCaisse\NotePupUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\PopUps\PopUpsCaisse\NotePupUp.Designer.cs">
+      <DependentUpon>NotePupUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\PopUps\PopUpsCaisse\PayementPopUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\PopUps\PopUpsCaisse\PayementPopUp.Designer.cs">
+      <DependentUpon>PayementPopUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\PopUps\PrixProduitPopUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\PopUps\PrixProduitPopUp.Designer.cs">
+      <DependentUpon>PrixProduitPopUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\SteLivraison.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\SteLivraison.Designer.cs">
+      <DependentUpon>SteLivraison.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\PopUps\PopUpsCaisse\NouveauCmdPopUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\PopUps\PopUpsCaisse\NouveauCmdPopUp.Designer.cs">
+      <DependentUpon>NouveauCmdPopUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\SubUserControle\PlCaisse\UserNote.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\SubUserControle\PlCaisse\UserNote.Designer.cs">
+      <DependentUpon>UserNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\SubUserControle\PlCaisse\UserPlCmd.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\SubUserControle\PlCaisse\UserPlCmd.Designer.cs">
+      <DependentUpon>UserPlCmd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\SubUserControle\PlCaisse\UserRowAttendCmd.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\SubUserControle\PlCaisse\UserRowAttendCmd.Designer.cs">
+      <DependentUpon>UserRowAttendCmd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\SubUserControle\PlEtatB\UserEspaceCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\SubUserControle\PlEtatB\UserEspaceCard.Designer.cs">
+      <DependentUpon>UserEspaceCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\SubUserControle\PlEtatB\UserPlEtatBoutique.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\SubUserControle\PlEtatB\UserPlEtatBoutique.Designer.cs">
+      <DependentUpon>UserPlEtatBoutique.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\SubUserControle\PlEtatB\UserTable.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\SubUserControle\PlEtatB\UserTable.Designer.cs">
+      <DependentUpon>UserTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\SubUserControle\UserCat.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\SubUserControle\UserCat.Designer.cs">
+      <DependentUpon>UserCat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\SubUserControle\PlCaisse\UserCatCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\SubUserControle\PlCaisse\UserCatCard.Designer.cs">
+      <DependentUpon>UserCatCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\SubUserControle\UserDetailsCmdRow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\SubUserControle\UserDetailsCmdRow.Designer.cs">
+      <DependentUpon>UserDetailsCmdRow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\SubUserControle\UserEspace.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\SubUserControle\UserEspace.Designer.cs">
+      <DependentUpon>UserEspace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\SubUserControle\PlCaisse\UserProdCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\SubUserControle\PlCaisse\UserProdCard.Designer.cs">
+      <DependentUpon>UserProdCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\SubUserControle\UserRowCharges.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\SubUserControle\UserRowCharges.Designer.cs">
+      <DependentUpon>UserRowCharges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\SubUserControle\UserRowClients.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\SubUserControle\UserRowClients.Designer.cs">
+      <DependentUpon>UserRowClients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\SubUserControle\UserRowCmd.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\SubUserControle\UserRowCmd.Designer.cs">
+      <DependentUpon>UserRowCmd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\SubUserControle\UserRowFournisseurs.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\SubUserControle\UserRowFournisseurs.Designer.cs">
+      <DependentUpon>UserRowFournisseurs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\SubUserControle\UserRowProduitAchat.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\SubUserControle\UserRowProduitAchat.Designer.cs">
+      <DependentUpon>UserRowProduitAchat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\SubUserControle\PlCaisse\UserRowProduitCmd.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\SubUserControle\PlCaisse\UserRowProduitCmd.Designer.cs">
+      <DependentUpon>UserRowProduitCmd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\SubUserControle\UserRowProduitVente.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\SubUserControle\UserRowProduitVente.Designer.cs">
+      <DependentUpon>UserRowProduitVente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\SubUserControle\UserRowReg.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\SubUserControle\UserRowReg.Designer.cs">
+      <DependentUpon>UserRowReg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\SubUserControle\UserRowUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\SubUserControle\UserRowUser.Designer.cs">
+      <DependentUpon>UserRowUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\SubUserControle\UserSteLiv.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\SubUserControle\UserSteLiv.Designer.cs">
+      <DependentUpon>UserSteLiv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\SubUserControle\UserRowUnite.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\SubUserControle\UserRowUnite.Designer.cs">
+      <DependentUpon>UserRowUnite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\UniteForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\UniteForm.Designer.cs">
+      <DependentUpon>UniteForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\SubUserControle\PlCaisse\UserCategorie_Prod.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\SubUserControle\PlCaisse\UserCategorie_Prod.Designer.cs">
+      <DependentUpon>UserCategorie_Prod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\UserPreviliges.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\UserPreviliges.Designer.cs">
+      <DependentUpon>UserPreviliges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="PL\AllChargesForm.resx">
+      <DependentUpon>AllChargesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\AllClientsForm.resx">
+      <DependentUpon>AllClientsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\AllCmdForm.resx">
+      <DependentUpon>AllCmdForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\AllCreditClientForm.resx">
+      <DependentUpon>AllCreditClientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\AllDetailsCmdForm.resx">
+      <DependentUpon>AllDetailsCmdForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\AllFournisseursForm.resx">
+      <DependentUpon>AllFournisseursForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\AllProduitsAchat.resx">
+      <DependentUpon>AllProduitsAchat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\AllProduitsVente.resx">
+      <DependentUpon>AllProduitsVente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\AllRegClientForm.resx">
+      <DependentUpon>AllRegClientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\AllUserForm.resx">
+      <DependentUpon>AllUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\AttendCmd.resx">
+      <DependentUpon>AttendCmd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\CaisseForm.resx">
+      <DependentUpon>CaisseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\CategoriesForm.resx">
+      <DependentUpon>CategoriesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\DashboardForm.resx">
+      <DependentUpon>DashboardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\espacesForm.resx">
+      <DependentUpon>espacesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\Generalite.resx">
+      <DependentUpon>Generalite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\mainForm.resx">
+      <DependentUpon>mainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\NewChargeForm.resx">
+      <DependentUpon>NewChargeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\NewClientForm.resx">
+      <DependentUpon>NewClientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\NewFournisseurForm.resx">
+      <DependentUpon>NewFournisseurForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\NewProduitForm.resx">
+      <DependentUpon>NewProduitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\NewRegClientForm.resx">
+      <DependentUpon>NewRegClientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\NewUserForm.resx">
+      <DependentUpon>NewUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\PopUps\ChargeInfoPopUP.resx">
+      <DependentUpon>ChargeInfoPopUP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\PopUps\ChargePopUp.resx">
+      <DependentUpon>ChargePopUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\PopUps\PopUpsCaisse\MergeTablePopUp.resx">
+      <DependentUpon>MergeTablePopUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\PopUps\PopUpsCaisse\NotePupUp.resx">
+      <DependentUpon>NotePupUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\PopUps\PopUpsCaisse\PayementPopUp.resx">
+      <DependentUpon>PayementPopUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\PopUps\PrixProduitPopUp.resx">
+      <DependentUpon>PrixProduitPopUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\SteLivraison.resx">
+      <DependentUpon>SteLivraison.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\PopUps\PopUpsCaisse\NouveauCmdPopUp.resx">
+      <DependentUpon>NouveauCmdPopUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\SubUserControle\PlCaisse\UserNote.resx">
+      <DependentUpon>UserNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\SubUserControle\PlCaisse\UserPlCmd.resx">
+      <DependentUpon>UserPlCmd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\SubUserControle\PlCaisse\UserRowAttendCmd.resx">
+      <DependentUpon>UserRowAttendCmd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\SubUserControle\PlEtatB\UserEspaceCard.resx">
+      <DependentUpon>UserEspaceCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\SubUserControle\PlEtatB\UserPlEtatBoutique.resx">
+      <DependentUpon>UserPlEtatBoutique.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\SubUserControle\PlEtatB\UserTable.resx">
+      <DependentUpon>UserTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\SubUserControle\UserCat.resx">
+      <DependentUpon>UserCat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\SubUserControle\PlCaisse\UserCatCard.resx">
+      <DependentUpon>UserCatCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\SubUserControle\UserDetailsCmdRow.resx">
+      <DependentUpon>UserDetailsCmdRow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\SubUserControle\UserEspace.resx">
+      <DependentUpon>UserEspace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\SubUserControle\PlCaisse\UserProdCard.resx">
+      <DependentUpon>UserProdCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\SubUserControle\UserRowCharges.resx">
+      <DependentUpon>UserRowCharges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\SubUserControle\UserRowClients.resx">
+      <DependentUpon>UserRowClients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\SubUserControle\UserRowCmd.resx">
+      <DependentUpon>UserRowCmd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\SubUserControle\UserRowFournisseurs.resx">
+      <DependentUpon>UserRowFournisseurs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\SubUserControle\UserRowProduitAchat.resx">
+      <DependentUpon>UserRowProduitAchat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\SubUserControle\PlCaisse\UserRowProduitCmd.resx">
+      <DependentUpon>UserRowProduitCmd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\SubUserControle\UserRowProduitVente.resx">
+      <DependentUpon>UserRowProduitVente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\SubUserControle\UserRowReg.resx">
+      <DependentUpon>UserRowReg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\SubUserControle\UserRowUser.resx">
+      <DependentUpon>UserRowUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\SubUserControle\UserSteLiv.resx">
+      <DependentUpon>UserSteLiv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\SubUserControle\UserRowUnite.resx">
+      <DependentUpon>UserRowUnite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\UniteForm.resx">
+      <DependentUpon>UniteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\SubUserControle\PlCaisse\UserCategorie_Prod.resx">
+      <DependentUpon>UserCategorie_Prod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\UserPreviliges.resx">
+      <DependentUpon>UserPreviliges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EntityDeploy Include="BL\Cfe_shop_db.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Cfe_shop_db.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="BL\Cfe_shop_db.edmx.diagram">
+      <DependentUpon>Cfe_shop_db.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BL\Cfe_shop_db.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Cfe_shop_db.edmx</DependentUpon>
+      <LastGenOutput>Cfe_shop_db.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="BL\Cfe_shop_db.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Cfe_shop_db.edmx</DependentUpon>
+      <LastGenOutput>Cfe_shop_db.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
