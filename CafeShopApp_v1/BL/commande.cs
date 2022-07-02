@@ -31,17 +31,17 @@ namespace CafeShopApp_v1.BL
         public string statu { get; set; }
         public Nullable<decimal> montant_total { get; set; }
         public Nullable<decimal> montant_rest { get; set; }
+        public Nullable<int> delivery_company { get; set; }
         public Nullable<bool> isready { get; set; }
         public Nullable<System.DateTime> created_at { get; set; }
         public Nullable<System.DateTime> modifiedd_at { get; set; }
-        public Nullable<int> delivery_company { get; set; }
     
         public virtual client client1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<commande_details> commande_details { get; set; }
-        public virtual ste_livraisons ste_livraisons { get; set; }
-        public virtual user user { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<commande_details_annuler> commande_details_annuler { get; set; }
+        public virtual ste_livraisons ste_livraisons { get; set; }
+        public virtual user user { get; set; }
     }
 }

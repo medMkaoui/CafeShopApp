@@ -4,50 +4,50 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b3619c54a7a34c888296ae33abf64b44" Name="Diagram1">
-        <EntityTypeShape EntityType="Cfe_shop_dbModel.achat_details" Width="1.5" PointX="8.25" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cfe_shop_dbModel.achat" Width="1.5" PointX="6" PointY="20.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cfe_shop_dbModel.category" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cfe_shop_dbModel.charge" Width="1.5" PointX="6" PointY="24.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cfe_shop_dbModel.client" Width="1.5" PointX="3.75" PointY="10" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cfe_shop_dbModel.commande_details" Width="1.5" PointX="8.25" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cfe_shop_dbModel.commande" Width="1.5" PointX="6" PointY="12.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cfe_shop_dbModel.espace" Width="1.5" PointX="10.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cfe_shop_dbModel.fournisseur" Width="1.5" PointX="3.75" PointY="20.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cfe_shop_dbModel.info" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cfe_shop_dbModel.livraison_produit" Width="1.5" PointX="8.25" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cfe_shop_dbModel.mode_reg" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cfe_shop_dbModel.note" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cfe_shop_dbModel.produit" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cfe_shop_dbModel.reglement" Width="1.5" PointX="9" PointY="15.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cfe_shop_dbModel.ste_livraisons" Width="1.5" PointX="3.75" PointY="13.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cfe_shop_dbModel.tb_tables" Width="1.5" PointX="13" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cfe_shop_dbModel.type_charge" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cfe_shop_dbModel.unite" Width="1.5" PointX="3.75" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cfe_shop_dbModel.user" Width="1.5" PointX="3.75" PointY="16.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cfe_shop_dbModel.users_privileges" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
-        <AssociationConnector Association="Cfe_shop_dbModel.FK__achat_det__achat__5812160E" ManuallyRouted="false" />
-        <AssociationConnector Association="Cfe_shop_dbModel.FK__achat_det__produ__59063A47" ManuallyRouted="false" />
-        <AssociationConnector Association="Cfe_shop_dbModel.FK__achats__fourniss__5441852A" ManuallyRouted="false" />
-        <AssociationConnector Association="Cfe_shop_dbModel.FK__achats__responsa__5535A963" ManuallyRouted="false" />
-        <AssociationConnector Association="Cfe_shop_dbModel.FK__notes__cat__2F10007B" ManuallyRouted="false" />
-        <AssociationConnector Association="Cfe_shop_dbModel.FK__produits__catego__29572725" ManuallyRouted="false" />
-        <AssociationConnector Association="Cfe_shop_dbModel.FK__produits__catego__2A4B4B5E" ManuallyRouted="false" />
-        <AssociationConnector Association="Cfe_shop_dbModel.FK__charges__respons__5BE2A6F2" ManuallyRouted="false" />
-        <AssociationConnector Association="Cfe_shop_dbModel.FK__commandes__clien__403A8C7D" ManuallyRouted="false" />
-        <AssociationConnector Association="Cfe_shop_dbModel.FK__reglement__clien__5165187F" ManuallyRouted="false" />
-        <AssociationConnector Association="Cfe_shop_dbModel.FK__commande___produ__47DBAE45" ManuallyRouted="false" />
-        <AssociationConnector Association="Cfe_shop_dbModel.FK__commande_de__cmd__46E78A0C" ManuallyRouted="false" />
-        <AssociationConnector Association="Cfe_shop_dbModel.FK__commandes__deliv__208CD6FA" ManuallyRouted="false" />
-        <AssociationConnector Association="Cfe_shop_dbModel.FK__commandes__respo__412EB0B6" ManuallyRouted="false" />
-        <AssociationConnector Association="Cfe_shop_dbModel.FK__tb_tables__espac__35BCFE0A" ManuallyRouted="false" />
-        <AssociationConnector Association="Cfe_shop_dbModel.FK__reglement__forni__5070F446" ManuallyRouted="false" />
-        <AssociationConnector Association="Cfe_shop_dbModel.FK__livraison__produ__4BAC3F29" ManuallyRouted="false" />
-        <AssociationConnector Association="Cfe_shop_dbModel.FK__livraison_p__liv__4AB81AF0" ManuallyRouted="false" />
-        <AssociationConnector Association="Cfe_shop_dbModel.FK__produits__unite___2B3F6F97" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="Cfe_shop_dbModel.commande_details_annuler" Width="1.5" PointX="8.25" PointY="11.625" />
-        <AssociationConnector Association="Cfe_shop_dbModel.FK__commande___produ__690797E6" />
-        <AssociationConnector Association="Cfe_shop_dbModel.FK__commande_de__cmd__681373AD" />
+      <Diagram DiagramId="b5fcd77632584f2fbae3b7fa1de317b9" Name="Diagram1">
+        <EntityTypeShape EntityType="Cfe_shop_dbModel.achat_details" Width="1.5" PointX="8.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cfe_shop_dbModel.achat" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cfe_shop_dbModel.category" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cfe_shop_dbModel.charge" Width="1.5" PointX="6" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cfe_shop_dbModel.client" Width="1.5" PointX="3.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cfe_shop_dbModel.commande_details" Width="1.5" PointX="8.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cfe_shop_dbModel.commande_details_annuler" Width="1.5" PointX="8.25" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cfe_shop_dbModel.commande" Width="1.5" PointX="6" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cfe_shop_dbModel.espace" Width="1.5" PointX="10.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cfe_shop_dbModel.fournisseur" Width="1.5" PointX="3.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cfe_shop_dbModel.info" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cfe_shop_dbModel.livraison_produit" Width="1.5" PointX="11.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cfe_shop_dbModel.mode_reg" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cfe_shop_dbModel.note" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cfe_shop_dbModel.produit" Width="1.5" PointX="6" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cfe_shop_dbModel.reglement" Width="1.5" PointX="11" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cfe_shop_dbModel.ste_livraisons" Width="1.5" PointX="3.75" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cfe_shop_dbModel.tb_tables" Width="1.5" PointX="13" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cfe_shop_dbModel.type_charge" Width="1.5" PointX="8.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cfe_shop_dbModel.unite" Width="1.5" PointX="3.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cfe_shop_dbModel.user" Width="1.5" PointX="3.75" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cfe_shop_dbModel.users_privileges" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
+        <AssociationConnector Association="Cfe_shop_dbModel.FK__achat_det__achat__693CA210" ManuallyRouted="false" />
+        <AssociationConnector Association="Cfe_shop_dbModel.FK__achat_det__produ__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="Cfe_shop_dbModel.FK__achats__fourniss__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="Cfe_shop_dbModel.FK__achats__responsa__6C190EBB" ManuallyRouted="false" />
+        <AssociationConnector Association="Cfe_shop_dbModel.FK__notes__cat__76969D2E" ManuallyRouted="false" />
+        <AssociationConnector Association="Cfe_shop_dbModel.FK__produits__catego__778AC167" ManuallyRouted="false" />
+        <AssociationConnector Association="Cfe_shop_dbModel.FK__produits__catego__787EE5A0" ManuallyRouted="false" />
+        <AssociationConnector Association="Cfe_shop_dbModel.FK__charges__respons__6D0D32F4" ManuallyRouted="false" />
+        <AssociationConnector Association="Cfe_shop_dbModel.FK__commandes__clien__71D1E811" ManuallyRouted="false" />
+        <AssociationConnector Association="Cfe_shop_dbModel.FK__reglement__clien__7A672E12" ManuallyRouted="false" />
+        <AssociationConnector Association="Cfe_shop_dbModel.FK__commande___produ__6E01572D" ManuallyRouted="false" />
+        <AssociationConnector Association="Cfe_shop_dbModel.FK__commande_de__cmd__6EF57B66" ManuallyRouted="false" />
+        <AssociationConnector Association="Cfe_shop_dbModel.FK__commande___produ__6FE99F9F" ManuallyRouted="false" />
+        <AssociationConnector Association="Cfe_shop_dbModel.FK__commande_de__cmd__70DDC3D8" ManuallyRouted="false" />
+        <AssociationConnector Association="Cfe_shop_dbModel.FK__commandes__deliv__72C60C4A" ManuallyRouted="false" />
+        <AssociationConnector Association="Cfe_shop_dbModel.FK__commandes__respo__73BA3083" ManuallyRouted="false" />
+        <AssociationConnector Association="Cfe_shop_dbModel.FK__tb_tables__espac__7C4F7684" ManuallyRouted="false" />
+        <AssociationConnector Association="Cfe_shop_dbModel.FK__reglement__forni__7B5B524B" ManuallyRouted="false" />
+        <AssociationConnector Association="Cfe_shop_dbModel.FK__livraison__produ__74AE54BC" ManuallyRouted="false" />
+        <AssociationConnector Association="Cfe_shop_dbModel.FK__livraison_p__liv__75A278F5" ManuallyRouted="false" />
+        <AssociationConnector Association="Cfe_shop_dbModel.FK__produits__unite___797309D9" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

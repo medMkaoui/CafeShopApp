@@ -33,6 +33,7 @@ namespace CafeShopApp_v1.BL
         public virtual DbSet<charge> charges { get; set; }
         public virtual DbSet<client> clients { get; set; }
         public virtual DbSet<commande_details> commande_details { get; set; }
+        public virtual DbSet<commande_details_annuler> commande_details_annuler { get; set; }
         public virtual DbSet<commande> commandes { get; set; }
         public virtual DbSet<espace> espaces { get; set; }
         public virtual DbSet<fournisseur> fournisseurs { get; set; }
@@ -48,7 +49,6 @@ namespace CafeShopApp_v1.BL
         public virtual DbSet<unite> unites { get; set; }
         public virtual DbSet<user> users { get; set; }
         public virtual DbSet<users_privileges> users_privileges { get; set; }
-        public virtual DbSet<commande_details_annuler> commande_details_annuler { get; set; }
     
         public virtual int allowed_user(Nullable<int> id_user, string place)
         {
@@ -280,6 +280,19 @@ namespace CafeShopApp_v1.BL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<get_cmd_by_str_search_Result>("get_cmd_by_str_search", strSearchParameter);
         }
     
+        public virtual ObjectResult<get_credit_client_by_str_search_Result> get_credit_client_by_str_search(string strSearch, Nullable<int> idclient)
+        {
+            var strSearchParameter = strSearch != null ?
+                new ObjectParameter("strSearch", strSearch) :
+                new ObjectParameter("strSearch", typeof(string));
+    
+            var idclientParameter = idclient.HasValue ?
+                new ObjectParameter("idclient", idclient) :
+                new ObjectParameter("idclient", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<get_credit_client_by_str_search_Result>("get_credit_client_by_str_search", strSearchParameter, idclientParameter);
+        }
+    
         public virtual ObjectResult<Nullable<decimal>> get_data_daily_rapport(Nullable<System.DateTime> date)
         {
             var dateParameter = date.HasValue ?
@@ -344,6 +357,19 @@ namespace CafeShopApp_v1.BL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<get_produit_vente_by_str_search_Result>("get_produit_vente_by_str_search", strSearchParameter);
         }
     
+        public virtual ObjectResult<get_reg_client_by_str_search_Result> get_reg_client_by_str_search(string strSearch, Nullable<int> idclient)
+        {
+            var strSearchParameter = strSearch != null ?
+                new ObjectParameter("strSearch", strSearch) :
+                new ObjectParameter("strSearch", typeof(string));
+    
+            var idclientParameter = idclient.HasValue ?
+                new ObjectParameter("idclient", idclient) :
+                new ObjectParameter("idclient", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<get_reg_client_by_str_search_Result>("get_reg_client_by_str_search", strSearchParameter, idclientParameter);
+        }
+    
         public virtual ObjectResult<get_steLiv_by_str_search_Result> get_steLiv_by_str_search(string strSearch)
         {
             var strSearchParameter = strSearch != null ?
@@ -360,32 +386,6 @@ namespace CafeShopApp_v1.BL
                 new ObjectParameter("strSearch", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<get_users_by_str_search_Result>("get_users_by_str_search", strSearchParameter);
-        }
-    
-        public virtual ObjectResult<get_credit_client_by_str_search_Result> get_credit_client_by_str_search(string strSearch, Nullable<int> idclient)
-        {
-            var strSearchParameter = strSearch != null ?
-                new ObjectParameter("strSearch", strSearch) :
-                new ObjectParameter("strSearch", typeof(string));
-    
-            var idclientParameter = idclient.HasValue ?
-                new ObjectParameter("idclient", idclient) :
-                new ObjectParameter("idclient", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<get_credit_client_by_str_search_Result>("get_credit_client_by_str_search", strSearchParameter, idclientParameter);
-        }
-    
-        public virtual ObjectResult<get_reg_client_by_str_search_Result> get_reg_client_by_str_search(string strSearch, Nullable<int> idclient)
-        {
-            var strSearchParameter = strSearch != null ?
-                new ObjectParameter("strSearch", strSearch) :
-                new ObjectParameter("strSearch", typeof(string));
-    
-            var idclientParameter = idclient.HasValue ?
-                new ObjectParameter("idclient", idclient) :
-                new ObjectParameter("idclient", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<get_reg_client_by_str_search_Result>("get_reg_client_by_str_search", strSearchParameter, idclientParameter);
         }
     }
 }

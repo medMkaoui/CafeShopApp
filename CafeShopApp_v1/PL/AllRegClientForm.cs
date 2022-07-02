@@ -48,7 +48,7 @@ namespace CafeShopApp_v1.PL
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            NewUserForm newUser = new NewUserForm();
+            NewRegClientForm newUser = new NewRegClientForm();
             mainForm.MainForm.plYield.Controls.Clear();
             mainForm.MainForm.plYield.Controls.Add(newUser);
         }
