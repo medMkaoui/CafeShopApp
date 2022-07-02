@@ -23,10 +23,10 @@ namespace CafeShopApp_v1.BL
         public string statu { get; set; }
         public Nullable<decimal> montant_total { get; set; }
         public Nullable<decimal> montant_rest { get; set; }
+        public Nullable<int> delivery_company { get; set; }
         public Nullable<bool> isready { get; set; }
         public Nullable<System.DateTime> created_at { get; set; }
         public Nullable<System.DateTime> modifiedd_at { get; set; }
-        public Nullable<int> delivery_company { get; set; }
         public int id_user { get; set; }
         public string name_user { get; set; }
         public string adresse { get; set; }

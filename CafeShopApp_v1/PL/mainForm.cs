@@ -30,7 +30,8 @@ namespace CafeShopApp_v1.PL
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
-            GetCodeDash();
+            MessageBox.Show("this is from hamza faris");
+             GetCodeDash();
         }
 
         private void btnSaillingPoint_Click(object sender, EventArgs e)

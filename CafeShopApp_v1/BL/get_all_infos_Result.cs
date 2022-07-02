@@ -19,5 +19,9 @@ namespace CafeShopApp_v1.BL
         public string adresse { get; set; }
         public string email { get; set; }
         public string tel { get; set; }
+        public bool Prix_J_N { get; set; }
+        public bool Liveraison { get; set; }
+        public System.TimeSpan Time_Debut_J { get; set; }
+        public System.TimeSpan Time_F_J { get; set; }
     }
 }

@@ -19,8 +19,8 @@ namespace CafeShopApp_v1.BL
         {
             this.achat_details = new HashSet<achat_details>();
             this.commande_details = new HashSet<commande_details>();
-            this.livraison_produit = new HashSet<livraison_produit>();
             this.commande_details_annuler = new HashSet<commande_details_annuler>();
+            this.livraison_produit = new HashSet<livraison_produit>();
         }
     
         public int id_produit { get; set; }
@@ -42,9 +42,9 @@ namespace CafeShopApp_v1.BL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<commande_details> commande_details { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<commande_details_annuler> commande_details_annuler { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<livraison_produit> livraison_produit { get; set; }
         public virtual unite unite { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<commande_details_annuler> commande_details_annuler { get; set; }
     }
 }
